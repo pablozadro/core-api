@@ -1,0 +1,48 @@
+{
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "explorer.compactFolders": false,
+    "workbench.settings.editor": "json",
+    "editor.tabSize": 2,
+    "editor.autoIndent": "none",
+    "editor.detectIndentation": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.renderWhitespace": "all", 
+    "editor.wordWrapColumn": 100,
+    "editor.rulers": [
+      100
+    ],
+    "[plaintext]": {
+      "editor.wordWrap": "wordWrapColumn",
+      "editor.wordWrapColumn": 100
+    },
+    "[markdown]": {
+      "editor.wordWrap": "wordWrapColumn",
+      "editor.wordWrapColumn": 100
+    },
+    "[python]": {
+      "editor.tabSize": 4
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#2f7c47",
+      "activityBar.activeBorder": "#606020",
+      "activityBar.background": "#2f7c47",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#422c74",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "statusBar.background": "#215732",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#2f7c47",
+      "titleBar.activeBackground": "#215732",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#21573299",
+      "titleBar.inactiveForeground": "#e7e7e799",
+      "sash.hoverBorder": "#2f7c47",
+      "statusBarItem.remoteBackground": "#215732",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799"
+    },
+    "peacock.color": "#215732"
+  }
