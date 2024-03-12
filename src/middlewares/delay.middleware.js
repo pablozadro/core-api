@@ -7,7 +7,7 @@ function getRandom(min, max) {
 }
 
 module.exports = (req, res, next) => {
-  const delay = getRandom(250, 1250);
+  const delay = getRandom(1000, 2250);
   debug(`Delay ${delay} ms`)
   setTimeout(() => next(), delay);
 };
