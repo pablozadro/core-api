@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const indexRouter = require('@/landing/landing.router');
 const authRouter = require('@/auth/auth.router');
+const productsRouter = require('@/products/products.router');
 const errorMiddleware = require('@/middlewares/error.middleware');
 const delayMiddleware = require('@/middlewares/delay.middleware');
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use('/api/v1', delayMiddleware);
 app.use('/api/v1', indexRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/products', productsRouter);
 app.use('/api/v1', errorMiddleware);
 
 
