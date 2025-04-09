@@ -1,5 +1,6 @@
 #!/usr/bin/env ts-node
 import 'module-alias/register';
+import env from '@/environment';
 import app from '@/app';
 import debug from 'debug';
 import http from 'http';
@@ -24,7 +25,7 @@ interface NodeSystemError extends Error{
 
 const log = debug('lite-api:server');
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(env.PORT);
 app.set('port', port);
 
 

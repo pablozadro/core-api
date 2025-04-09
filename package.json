@@ -6,13 +6,16 @@
     "@": "./src"
   },
   "scripts": {
-    "start": "set DEBUG=lite-api:*&&set PORT=5000&&npx ts-node -i  ./src/index"
+    "start": "set DEBUG=lite-api:*&&npx ts-node -i  ./src/index"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "http-errors": "^2.0.0",
     "module-alias": "^2.2.3",
+    "mongoose": "^8.13.2",
     "morgan": "~1.9.1",
     "ts-node": "^10.9.2"
   },
@@ -21,6 +24,7 @@
     "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.1",
+    "@types/http-errors": "^2.0.4",
     "@types/morgan": "^1.9.9"
   }
 }
