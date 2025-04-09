@@ -1,3 +1,4 @@
 # TODO
 
-Auth module.
+INPROGRESS -> Auth module
+TODO -> ESLint
