@@ -9,7 +9,8 @@
     "start": "npm run serve:dev",
     "serve:dev": "set DEBUG=lite-api:*&&npx ts-node -i  ./src/index",
     "scripts:generate-random-str": "node scripts/generate-random-str",
-    "lint": "npx eslint ./src"
+    "lint": "npx eslint ./src",
+    "test": "jest"
   },
   "dependencies": {
     "argon2": "^0.41.1",
@@ -31,10 +32,15 @@
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.1",
     "@types/http-errors": "^2.0.4",
+    "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/morgan": "^1.9.9",
+    "@types/supertest": "^6.0.3",
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.1",
     "typescript-eslint": "^8.29.1"
   }
 }

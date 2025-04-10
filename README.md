@@ -32,3 +32,9 @@ mongod
 npm run serve:dev
 ```
 
+### Lint & Test
+
+```bash
+npm run lint
+npm run test
+```
