@@ -6,13 +6,16 @@
     "@": "./src"
   },
   "scripts": {
-    "start": "set DEBUG=lite-api:*&&npx ts-node -i  ./src/index"
+    "serve:dev": "set DEBUG=lite-api:*&&npx ts-node -i  ./src/index",
+    "scripts:generate-random-str": "node scripts/generate-random-str"
   },
   "dependencies": {
+    "argon2": "^0.41.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "http-errors": "^2.0.0",
     "module-alias": "^2.2.3",
     "mongoose": "^8.13.2",

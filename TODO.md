@@ -1,4 +1,6 @@
 # TODO
 
-INPROGRESS -> Auth module
-TODO -> ESLint
+Auth Module
+- Login endpoint
+
+ESLint
