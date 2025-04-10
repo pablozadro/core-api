@@ -82,14 +82,32 @@ export class AuthUserService {
   }
 
   static async getUserById(id: string) {
-    return AuthUserRepository.getUserById(id);
+    const user = await AuthUserRepository.getUserById(id);
+
+    if(!user) {
+      throw createError(400, 'User Not Found');
+    }
+
+    return user;
   }
 
   static async updateUserById(id: string, body: UpdateUserBody) {
-    return AuthUserRepository.updateUserById(id, body);
+    const user = await AuthUserRepository.updateUserById(id, body);
+
+    if(!user) {
+      throw createError(400, 'User Not Found');
+    }
+
+    return;
   }
 
   static async deleteUserById(id: string) {
-    return AuthUserRepository.deleteUserById(id);
+    const user = await AuthUserRepository.deleteUserById(id);
+
+    if(!user) {
+      throw createError(400, 'User Not Found');
+    }
+
+    return
   }
 }
