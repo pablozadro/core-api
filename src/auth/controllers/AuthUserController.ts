@@ -1,13 +1,20 @@
 import { Request, Response, NextFunction } from 'express';
 import { LiteApiResponse } from '@/types';
-import { AuthUserService } from '@/auth/services';
+import { 
+  DeleteUserById,
+  GetAllUsers,
+  GetUserById,
+  Login,
+  Register,
+  UpdateUserById,
+} from '@/auth/services';
 
 export class AuthUserController {
 
   static async register(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
     try {
-      await AuthUserService.register(body);
+      await Register(body);
       const response: LiteApiResponse = { 
         msg: 'User Created Successfully', 
         payload: null, 
@@ -22,7 +29,7 @@ export class AuthUserController {
   static async login(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
     try {
-      const token = await AuthUserService.login(body);
+      const token = await Login(body);
       const response: LiteApiResponse = { 
         msg: 'User Login Successfully', 
         payload: { token }, 
@@ -34,24 +41,10 @@ export class AuthUserController {
     }
   }
 
-  static async getAll(req: Request, res: Response, next: NextFunction) {
-    try {
-      const users = await AuthUserService.getAll();
-      const response: LiteApiResponse = { 
-        msg: 'Users Fetched Successfully', 
-        payload: { users }, 
-        error: null 
-      }
-      res.json(response);
-    } catch(error) {
-      next(error);
-    }
-  }
-
   static async getUserById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     try {
-      const user = await AuthUserService.getUserById(id);
+      const user = await GetUserById(id);
       const response: LiteApiResponse = { 
         msg: 'User Fetched Successfully', 
         payload: { user }, 
@@ -68,7 +61,7 @@ export class AuthUserController {
     const { body } = req;
 
     try {
-      await AuthUserService.updateUserById(id, body);
+      await UpdateUserById(id, body);
       const response: LiteApiResponse = { 
         msg: 'User Updated Successfully', 
         payload: null, 
@@ -83,13 +76,27 @@ export class AuthUserController {
   static async deleteUserById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     try {
-      await AuthUserService.deleteUserById(id);
+      await DeleteUserById(id);
       const response: LiteApiResponse = { 
         msg: 'User Deleted Successfully', 
         payload: null, 
         error: null 
       }
       res.status(204).json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async getAllUsers(req: Request, res: Response, next: NextFunction) {
+    try {
+      const users = await GetAllUsers();
+      const response: LiteApiResponse = { 
+        msg: 'Users Fetched Successfully', 
+        payload: { users }, 
+        error: null 
+      }
+      res.json(response);
     } catch(error) {
       next(error);
     }

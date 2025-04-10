@@ -7,10 +7,10 @@ const router = express.Router();
 
 router.post('/users/register', [...registerValidation], AuthUserController.register);
 router.post('/users/login', [...loginValidation], AuthUserController.login);
-router.get('/users', [ isAuthenticated ], AuthUserController.getAll);
 router.get('/users/:id', [ isAuthenticated ], AuthUserController.getUserById);
 router.put('/users/:id', [ isAuthenticated ], AuthUserController.updateUserById);
 router.delete('/users/:id', [ isAuthenticated ], AuthUserController.deleteUserById);
+router.get('/users', [ isAuthenticated ], AuthUserController.getAllUsers);
 
 
 export default router;
