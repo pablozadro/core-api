@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { LiteApiResponse } from '@/types';
 
 export class HealthController {
 
-  static async getHealthCheck(req: Request, res: Response, next: NextFunction) {
+  static async getHealthCheck(req: Request, res: Response) {
     const response: LiteApiResponse = { 
       msg: 'Health Check OK', 
       payload: null, 

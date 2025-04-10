@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import debug from 'debug';
 import createError from 'http-errors';
 import jwt from 'jsonwebtoken';
 import env from '@/environment';
 
+const log = debug('lite-api:isAuthenticated');
 
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction)  => {
   const authorization = req.headers.authorization;
@@ -29,6 +31,7 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
       return next(error);
     }
   } catch (err) {
+    log(err)
     const error = createError(401, 'Unauthorized', { cause: 'Token is not verified' });
     return next(error);
   }
