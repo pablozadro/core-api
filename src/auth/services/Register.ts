@@ -17,7 +17,7 @@ export const Register = async (body: RegisterUserBody) => {
     const existsUser = await AuthUserRepository.exists({ email });
 
     if (existsUser) {
-      throw createError(400, 'Bad Request', { cause: 'Email already in use' });
+      throw createError(400, 'Bad Request', { cause: 'Email is already in use' });
     }
 
     const hashedPassword = await argon2.hash(`${pepper}.${password}`);

@@ -18,7 +18,6 @@ describe('DB Middleware', () => {
     test('there is no DB url', async () => {
       env.MONGODB_URL = '';
       const error = createError(503, 'Service Unavailable', { cause: 'Mongo URL Unavailable'});
-      console.log(error)
       await dbMiddleware(req, res, next);
       expect(next).toHaveBeenCalledWith(error);
     });
