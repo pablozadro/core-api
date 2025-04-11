@@ -10,7 +10,7 @@ const log = debug('lite-api:db-middleware');
 
 export const dbMiddleware = async (req: Request, res: Response, next: NextFunction)  => {
   if(!env.MONGODB_URL) {
-    const error = createError(503, 'Mongo URL Unavailable');
+    const error = createError(503, 'Service Unavailable', { cause: 'Mongo URL Unavailable'});
     next(error);
     return;
   }
@@ -20,7 +20,7 @@ export const dbMiddleware = async (req: Request, res: Response, next: NextFuncti
     log('Mongo connected');
     next();
   } catch(err) {
-    const error = createError(503, 'Database Service Unavailable');
+    const error = createError(503, 'Service Unavailable', { cause: 'Error connecting Mongo'});
     log(err);
     next(error);
   }
