@@ -17,16 +17,17 @@ export const Login = async (body: LoginUserBody) => {
       AUTH_PASSWORD_PEPPER: pepper,
       AUTH_JWT_SIGN_SECRET: jwtSignSecret,
     } = env;
+
     const user = await AuthUserRepository.getUserByEmail(email, "username email password");
 
     if (!user) {
-      throw createError(401, 'Bad Credentials', { cause: 'Email not registered' });
+      throw createError(401, 'Unauthorized', { cause: 'Email is not registered' });
     }
 
     const isPasswordVerified = await argon2.verify(user.password, `${pepper}.${password}`);
 
     if (!isPasswordVerified) {
-      throw createError(401, 'Bad Credentials', { cause: 'Wrong Password' });
+      throw createError(401, 'Unauthorized', { cause: 'Wrong Password' });
     }
 
     const payload = { 
