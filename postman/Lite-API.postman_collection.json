@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"foo@localhost.io\",\r\n    \"password\": \"abc123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"pablozadro@gmail.com\",\r\n    \"password\": \"abc123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,13 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/auth/users/register",
+							"raw": "{{BASE_URL}}/auth/register",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"auth",
-								"users",
 								"register"
 							]
 						}
@@ -52,13 +51,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/auth/users/login",
+							"raw": "{{BASE_URL}}/auth/login",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"auth",
-								"users",
 								"login"
 							]
 						}
@@ -115,7 +113,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"super foo\"\r\n}",
+							"raw": "{\r\n    \"username\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -135,7 +133,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "67f7eea15161b05200f643f9"
+									"value": "67f7ec01d36cf6961cbd6d13"
 								}
 							]
 						}
