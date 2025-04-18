@@ -38,7 +38,7 @@ describe('Login', () => {
       const { msg, payload, error } = body;
 
       expect(status).toEqual(401);
-      expect(msg).toEqual('Lite-API Error');
+      expect(msg).toEqual('Core-API Error');
       expect(payload).toEqual(null);
       expect(error).toEqual({
         status: 401,
@@ -56,7 +56,7 @@ describe('Login', () => {
       const { msg, payload, error } = body;
 
       expect(status).toEqual(401);
-      expect(msg).toEqual('Lite-API Error');
+      expect(msg).toEqual('Core-API Error');
       expect(payload).toEqual(null);
       expect(error).toEqual({
         status: 401,

@@ -5,7 +5,7 @@ import debug from 'debug';
 import env from '@/environment';
 
 
-const log = debug('lite-api:db-middleware');
+const log = debug('core-api:db-middleware');
 
 
 export const dbMiddleware = async (req: Request, res: Response, next: NextFunction)  => {

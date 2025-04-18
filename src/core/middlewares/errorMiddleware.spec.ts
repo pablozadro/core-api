@@ -22,7 +22,7 @@ describe('Error Middleware', () => {
 
     expect(status).toEqual(400);
 
-    expect(msg).toEqual('Lite-API Error');
+    expect(msg).toEqual('Core-API Error');
     expect(payload).toEqual(null);
     expect(error).toEqual({
       status: 400, 

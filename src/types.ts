@@ -1,11 +1,11 @@
-export interface LiteApiError {
+export interface CoreApiError {
   status: number;
   msg: string;
   cause: any;
 }
 
-export interface LiteApiResponse {
+export interface CoreApiResponse {
   msg: string;
   payload: any;
-  error: LiteApiError | null;
+  error: CoreApiError | null;
 }

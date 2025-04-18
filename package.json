@@ -1,5 +1,5 @@
 {
-  "name": "lite-api",
+  "name": "core-api",
   "version": "0.0.0",
   "private": true,
   "_moduleAliases": {
@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "npm run serve:dev",
-    "serve:dev": "set DEBUG=lite-api:*&&npx ts-node -i  ./src/index",
+    "serve:dev": "set DEBUG=core-api:*&&npx ts-node -i  ./src/index",
     "scripts:generate-random-str": "node scripts/generate-random-str",
     "lint": "npx eslint ./src",
     "test": "jest"

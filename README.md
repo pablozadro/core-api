@@ -1,15 +1,13 @@
-# Lite-API
+# Core-API
 
 
 ## Getting Started
-
 
 ### Install dependencies
 
 ```bash
 npm install
 ```
-
 
 ### Setup environment
 
@@ -24,7 +22,6 @@ Run `npm run scripts:generate-random-str` to generate random strings for:
 ```bash
 mongod
 ```
-
 
 ### Run development server
 

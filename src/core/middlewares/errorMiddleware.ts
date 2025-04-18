@@ -1,6 +1,6 @@
 import createError, { HttpError } from 'http-errors';
 import { Request, Response, NextFunction } from 'express';
-import { LiteApiError, LiteApiResponse } from '@/types';
+import { CoreApiError, CoreApiResponse } from '@/types';
 
 
 export const errorMiddleware = [
@@ -13,14 +13,14 @@ export const errorMiddleware = [
     const msg = err.message || 'Unknown Error';
     const cause = err.cause || null;
 
-    const error: LiteApiError = {
+    const error: CoreApiError = {
       status,
       msg,
       cause
     }
 
-    const response: LiteApiResponse = {
-      msg: 'Lite-API Error',
+    const response: CoreApiResponse = {
+      msg: 'Core-API Error',
       payload: null,
       error
     }

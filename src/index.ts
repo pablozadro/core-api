@@ -23,7 +23,7 @@ interface NodeSystemError extends Error{
     syscall:string;// The name of the system call that triggered the error
 }
 
-const log = debug('lite-api:server');
+const log = debug('core-api:server');
 
 const port = normalizePort(env.PORT);
 app.set('port', port);

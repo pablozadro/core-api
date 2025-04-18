@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { LiteApiResponse } from '@/types';
+import { CoreApiResponse } from '@/types';
 
 export class HealthController {
 
   static async getHealthCheck(req: Request, res: Response) {
-    const response: LiteApiResponse = { 
+    const response: CoreApiResponse = { 
       msg: 'Health Check OK', 
       payload: null, 
       error: null 

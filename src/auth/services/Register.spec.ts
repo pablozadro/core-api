@@ -36,7 +36,7 @@ describe('Register', () => {
       const { msg, payload, error } = body;
 
       expect(status).toEqual(400);
-      expect(msg).toEqual('Lite-API Error');
+      expect(msg).toEqual('Core-API Error');
       expect(payload).toEqual(null);
       expect(error).toEqual({
         status: 400,
@@ -52,7 +52,7 @@ describe('Register', () => {
       const { msg, payload, error } = body;
 
       expect(status).toEqual(400);
-      expect(msg).toEqual('Lite-API Error');
+      expect(msg).toEqual('Core-API Error');
       expect(payload).toEqual(null);
       expect(error).toEqual({
         status: 400,
@@ -75,7 +75,7 @@ describe('Register', () => {
 
       expect(requestBody.password.length < config.passwordMinLen);
       expect(status).toEqual(400);
-      expect(msg).toEqual('Lite-API Error');
+      expect(msg).toEqual('Core-API Error');
       expect(payload).toEqual(null);
       expect(error).toEqual({
         status: 400,
