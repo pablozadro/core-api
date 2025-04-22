@@ -23,6 +23,10 @@ export class NutritionCategoryService {
 
 
   static async createCategory(body: CreateCategoryBody) {
+    const count = await NutritionCategoryModel.findOne({ title: body.title }).countDocuments();
+    if (count) {
+      throw new Error(`Category ${body.title} already exists`);
+    }
     return NutritionCategoryModel.create(body);
   }
 
