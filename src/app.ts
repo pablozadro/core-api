@@ -5,6 +5,7 @@ import cors from 'cors';
 import { errorMiddleware, dbMiddleware } from '@/core/middlewares';
 import healthApi from '@/health/api';
 import authApi from '@/auth/authApi';
+import nutritionApi from '@/nutrition/nutritionApi';
 
 
 /* App */
@@ -21,6 +22,7 @@ app.use(dbMiddleware);
 /* APIs */
 app.use('/api/health', healthApi);
 app.use('/api/auth', authApi);
+app.use('/api/nutrition', nutritionApi);
 
 /* Error Handling */
 app.use(errorMiddleware);
