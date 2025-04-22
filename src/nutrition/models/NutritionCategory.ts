@@ -17,7 +17,7 @@ const nutritionCategorySchema = new mongoose.Schema({
   },
   color: { 
     type: String,
-    default: 'rgb(230,230,230)'
+    required: true,
   },
 },
 { 
