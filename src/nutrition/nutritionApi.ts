@@ -1,9 +1,14 @@
 import express from 'express';
-import { NutritionCategoryController } from '@/nutrition/controllers';
+import { 
+  NutritionCategoryController,
+  NutritionItemController
+ } from '@/nutrition/controllers';
 import { isAuthenticated } from '@/auth/middlewares';
 import { 
   createNutritionCategoryValidator, 
-  updateNutritionCategoryValidator 
+  updateNutritionCategoryValidator,
+  createNutritionItemValidator, 
+  updateNutritionItemValidator 
 } from '@/nutrition/validators';
 
 const router = express.Router();
@@ -37,6 +42,36 @@ router.get(
   '/categories', 
   [ isAuthenticated ], 
   NutritionCategoryController.getAllCategories
+);
+
+router.get(
+  '/items/:id', 
+  [ isAuthenticated ], 
+  NutritionItemController.getItemById
+);
+
+router.put(
+  '/items/:id', 
+  [ isAuthenticated, ...updateNutritionItemValidator ], 
+  NutritionItemController.updateItemById
+);
+
+router.delete(
+  '/items/:id', 
+  [ isAuthenticated ], 
+  NutritionItemController.deleteItemById
+);
+
+router.post(
+  '/items', 
+  [ isAuthenticated, ...createNutritionItemValidator ], 
+  NutritionItemController.createItem
+);
+
+router.get(
+  '/items', 
+  [ isAuthenticated ], 
+  NutritionItemController.getAllItems
 );
 
 
