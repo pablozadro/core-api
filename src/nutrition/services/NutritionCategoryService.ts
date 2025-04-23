@@ -1,5 +1,5 @@
 import { NutritionCategoryModel } from "@/nutrition/models";
-
+import createError from "http-errors";
 
 export interface CreateCategoryBody {
   title: string;
@@ -21,12 +21,13 @@ export class NutritionCategoryService {
     return NutritionCategoryModel.findById(id)
   }
 
-
   static async createCategory(body: CreateCategoryBody) {
     const count = await NutritionCategoryModel.findOne({ title: body.title }).countDocuments();
+
     if (count) {
-      throw new Error(`Category ${body.title} already exists`);
+     throw createError(400, 'Bad Request', { cause: 'Category already exists' });
     }
+
     return NutritionCategoryModel.create(body);
   }
 
