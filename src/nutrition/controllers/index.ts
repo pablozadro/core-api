@@ -1,2 +1,2 @@
-export * from './NutritionCategoryController';
-export * from './NutritionItemController';
+export * from './CategoryController';
+export * from './ItemController';

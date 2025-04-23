@@ -1,2 +1,2 @@
-export * from './NutritionCategoryService';
-export * from './NutritionItemService';
+export * from './CategoryService';
+export * from './ItemService';

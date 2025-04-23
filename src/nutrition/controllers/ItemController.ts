@@ -1,14 +1,14 @@
 import { Request,Response, NextFunction } from "express";
 import { CoreApiResponse } from '@/types';
-import { NutritionItemService } from "@/nutrition/services";
+import { ItemService } from "@/nutrition/services";
 
-export class NutritionItemController {
+export class ItemController {
 
   static async getItemById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
 
     try {
-      const item = await NutritionItemService.getItemById(id);
+      const item = await ItemService.getItemById(id);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Item Fetched Succesfully', 
@@ -29,7 +29,7 @@ export class NutritionItemController {
     const { title, category } = req.body;
 
     try {
-      const item = await NutritionItemService.updateItemById(id, { title, category });
+      const item = await ItemService.updateItemById(id, { title, category });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Item Updated Successfully', 
@@ -49,7 +49,7 @@ export class NutritionItemController {
     const { id } = req.params;
 
     try {
-      const item = await NutritionItemService.deleteItemById(id);
+      const item = await ItemService.deleteItemById(id);
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Item Deleted Successfully', 
@@ -69,7 +69,7 @@ export class NutritionItemController {
     const { title, category } = req.body;
 
     try {
-      const item = await NutritionItemService.createItem({ title, category });
+      const item = await ItemService.createItem({ title, category });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Item Created Successfully', 
@@ -86,8 +86,15 @@ export class NutritionItemController {
 
 
   static async getAllItems(req: Request, res: Response, next: NextFunction) {
+    const { category } = req.query;
+    const query: any = {};
+
+    if(category) {
+      query.category = category;
+    }
+
     try {
-      const items = await NutritionItemService.getItems();
+      const items = await ItemService.getItems(query);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Items Fetched Succesfully', 

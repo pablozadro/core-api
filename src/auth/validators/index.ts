@@ -4,7 +4,8 @@ import createError from 'http-errors';
 import config from '@/auth/config';
 
 
-export const registerValidation = [
+
+export const registerBodyValidation = [
   body('email').trim().isEmail(),
   body('password').trim().isLength({ 
     min: config.passwordMinLen, 
@@ -21,7 +22,7 @@ export const registerValidation = [
 ];
 
 
-export const loginValidation = [
+export const loginBodyValidation = [
   body('email').trim().isEmail(),
   body('password').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {

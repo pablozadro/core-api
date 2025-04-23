@@ -11,7 +11,7 @@ export interface UpdateItemBody {
   category?: string;
 }
 
-export class NutritionItemService {
+export class ItemService {
 
   static async getItems(query={}) {
     return NutritionItemModel.find(query)

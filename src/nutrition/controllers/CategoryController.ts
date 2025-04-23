@@ -1,14 +1,14 @@
 import { Request,Response, NextFunction } from "express";
 import { CoreApiResponse } from '@/types';
-import { NutritionCategoryService } from "@/nutrition/services";
+import { CategoryService } from "@/nutrition/services";
 
-export class NutritionCategoryController {
+export class CategoryController {
 
   static async getCategoryById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
 
     try {
-      const category = await NutritionCategoryService.getCategoryById(id);
+      const category = await CategoryService.getCategoryById(id);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Category Fetched Succesfully', 
@@ -29,7 +29,7 @@ export class NutritionCategoryController {
     const { title, color } = req.body;
 
     try {
-      const category = await NutritionCategoryService.updateCategoryById(id, { title, color });
+      const category = await CategoryService.updateCategoryById(id, { title, color });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Category Updated Successfully', 
@@ -49,7 +49,7 @@ export class NutritionCategoryController {
     const { id } = req.params;
 
     try {
-      const category = await NutritionCategoryService.deleteCategoryById(id);
+      const category = await CategoryService.deleteCategoryById(id);
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Category Deleted Successfully', 
@@ -69,7 +69,7 @@ export class NutritionCategoryController {
     const { title, color } = req.body;
 
     try {
-      const category = await NutritionCategoryService.createCategory({ title, color });
+      const category = await CategoryService.createCategory({ title, color });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Category Created Successfully', 
@@ -87,7 +87,7 @@ export class NutritionCategoryController {
 
   static async getAllCategories(req: Request, res: Response, next: NextFunction) {
     try {
-      const categories = await NutritionCategoryService.getCategories();
+      const categories = await CategoryService.getCategories();
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Categories Fetched Succesfully', 

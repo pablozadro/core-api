@@ -1,14 +1,14 @@
 import express from 'express';
 import { 
-  NutritionCategoryController,
-  NutritionItemController
+  CategoryController,
+  ItemController
  } from '@/nutrition/controllers';
 import { isAuthenticated } from '@/auth/middlewares';
 import { 
-  createNutritionCategoryValidator, 
-  updateNutritionCategoryValidator,
-  createNutritionItemValidator, 
-  updateNutritionItemValidator 
+  createCategoryBodyValidator, 
+  updateCategoryBodyValidator,
+  createItemBodyValidator, 
+  updateItemBodyValidator 
 } from '@/nutrition/validators';
 
 const router = express.Router();
@@ -17,61 +17,61 @@ const router = express.Router();
 router.get(
   '/categories/:id', 
   [ isAuthenticated ], 
-  NutritionCategoryController.getCategoryById
+  CategoryController.getCategoryById
 );
 
 router.put(
   '/categories/:id', 
-  [ isAuthenticated, ...updateNutritionCategoryValidator ], 
-  NutritionCategoryController.updateCategoryById
+  [ isAuthenticated, ...updateCategoryBodyValidator ], 
+  CategoryController.updateCategoryById
 );
 
 router.delete(
   '/categories/:id', 
   [ isAuthenticated ], 
-  NutritionCategoryController.deleteCategoryById
+  CategoryController.deleteCategoryById
 );
 
 router.post(
   '/categories', 
-  [ isAuthenticated, ...createNutritionCategoryValidator ], 
-  NutritionCategoryController.createCategory
+  [ isAuthenticated, ...createCategoryBodyValidator ], 
+  CategoryController.createCategory
 );
 
 router.get(
   '/categories', 
   [ isAuthenticated ], 
-  NutritionCategoryController.getAllCategories
+  CategoryController.getAllCategories
 );
 
 router.get(
   '/items/:id', 
   [ isAuthenticated ], 
-  NutritionItemController.getItemById
+  ItemController.getItemById
 );
 
 router.put(
   '/items/:id', 
-  [ isAuthenticated, ...updateNutritionItemValidator ], 
-  NutritionItemController.updateItemById
+  [ isAuthenticated, ...updateItemBodyValidator ], 
+  ItemController.updateItemById
 );
 
 router.delete(
   '/items/:id', 
   [ isAuthenticated ], 
-  NutritionItemController.deleteItemById
+  ItemController.deleteItemById
 );
 
 router.post(
   '/items', 
-  [ isAuthenticated, ...createNutritionItemValidator ], 
-  NutritionItemController.createItem
+  [ isAuthenticated, ...createItemBodyValidator ], 
+  ItemController.createItem
 );
 
 router.get(
   '/items', 
   [ isAuthenticated ], 
-  NutritionItemController.getAllItems
+  ItemController.getAllItems
 );
 
 

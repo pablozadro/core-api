@@ -11,7 +11,7 @@ export interface UpdateCategoryBody {
   color?: string;
 }
 
-export class NutritionCategoryService {
+export class CategoryService {
 
   static async getCategories(query={}) {
     return NutritionCategoryModel.find(query)
