@@ -8,7 +8,8 @@
   "scripts": {
     "start": "npm run serve:dev",
     "serve:dev": "set DEBUG=core-api:*&&npx ts-node -i  ./src/index",
-    "scripts:generate-random-str": "node scripts/generate-random-str",
+    "scripts:generate-random-str": "ts-node -i scripts/generate-random-str",
+    "scripts:migrate-csv": "ts-node -i scripts/migrate-csv",
     "lint": "npx eslint ./src",
     "test": "jest"
   },
@@ -16,6 +17,7 @@
     "argon2": "^0.41.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
     "debug": "~2.6.9",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -25,6 +27,7 @@
     "module-alias": "^2.2.3",
     "mongoose": "^8.13.2",
     "morgan": "~1.9.1",
+    "node-csv": "^0.1.2",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {

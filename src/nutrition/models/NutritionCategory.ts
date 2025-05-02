@@ -25,4 +25,4 @@ const nutritionCategorySchema = new mongoose.Schema({
 });
 
 
-export const NutritionCategoryModel = mongoose.model('NutritionCategory', nutritionCategorySchema);
+export const NutritionCategoryModel = mongoose.model('Category', nutritionCategorySchema);

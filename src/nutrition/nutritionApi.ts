@@ -64,7 +64,7 @@ router.delete(
 
 router.post(
   '/items', 
-  [ isAuthenticated, ...createItemBodyValidator ], 
+  [ ...createItemBodyValidator ], 
   ItemController.createItem
 );
 

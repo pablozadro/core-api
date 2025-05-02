@@ -66,10 +66,10 @@ export class ItemController {
 
 
   static async createItem(req: Request, res: Response, next: NextFunction) {
-    const { title, category } = req.body;
+    const { body } = req;
 
     try {
-      const item = await ItemService.createItem({ title, category });
+      const item = await ItemService.createItem(body);
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Item Created Successfully', 

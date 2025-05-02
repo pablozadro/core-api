@@ -40,7 +40,7 @@ export const Login = async (body: LoginUserBody) => {
 
     const token = jwt.sign(payload, jwtSignSecret, {
       algorithm: 'HS256',
-      expiresIn: '1d'
+      expiresIn: '7d'
     });
 
     return token;
