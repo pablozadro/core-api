@@ -93,6 +93,7 @@ export class ItemController {
     if(category) {
       query.category = category;
     }
+
     if(orderBy) {
       const k = orderBy !=='title' ? `fact.${orderBy}`:orderBy;
       sort[k] = orderDir === 'ASC' ? 1:-1
