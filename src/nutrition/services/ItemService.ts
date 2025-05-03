@@ -11,10 +11,11 @@ export interface UpdateItemBody {
   category?: string;
 }
 
+
 export class ItemService {
 
-  static async getItems(query={}) {
-    return NutritionItemModel.find(query)
+  static async getItems(query: any, sort:any={}) {
+    return NutritionItemModel.find(query).sort(sort)
   }
 
   static async getItemById(id: string) {

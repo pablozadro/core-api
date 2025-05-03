@@ -86,15 +86,20 @@ export class ItemController {
 
 
   static async getAllItems(req: Request, res: Response, next: NextFunction) {
-    const { category } = req.query;
+    const { category, orderBy, orderDir } = req.query;
     const query: any = {};
+    const sort: any = {};
 
     if(category) {
       query.category = category;
     }
+    if(orderBy) {
+      const k = orderBy !=='title' ? `fact.${orderBy}`:orderBy;
+      sort[k] = orderDir === 'ASC' ? 1:-1
+    }
 
     try {
-      const items = await ItemService.getItems(query);
+      const items = await ItemService.getItems(query, sort);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Items Fetched Succesfully', 

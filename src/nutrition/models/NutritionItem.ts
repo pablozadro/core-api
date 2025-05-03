@@ -22,15 +22,15 @@ export interface NutritionItemFact {
 }
 
 export interface NutritionItem {
-  _id?: string;
+  _id: string;
   title: string;
   description: string;
   category: mongoose.Types.ObjectId;
   brand: string;
   presentation: string;
   fact: NutritionItemFact;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 const nutritionItemSchema = new mongoose.Schema({
