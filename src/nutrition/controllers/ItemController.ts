@@ -86,7 +86,7 @@ export class ItemController {
 
 
   static async getAllItems(req: Request, res: Response, next: NextFunction) {
-    const { category, orderBy, orderDir } = req.query;
+    const { category, orderBy } = req.query;
     const query: any = {};
     const sort: any = {};
 
@@ -94,8 +94,11 @@ export class ItemController {
       query.category = category;
     }
 
-    if(orderBy) {
-      const k = orderBy !=='title' ? `fact.${orderBy}`:orderBy;
+    if(orderBy && typeof orderBy === 'string') {
+      const order = orderBy.split('-');
+      const orderItem = order[0].toLowerCase();
+      const orderDir = order[1];
+      const k = orderItem !=='title' ? `fact.${orderItem}`:orderItem;
       sort[k] = orderDir === 'ASC' ? 1:-1
     }
 
