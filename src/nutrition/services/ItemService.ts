@@ -11,11 +11,31 @@ export interface UpdateItemBody {
   category?: string;
 }
 
+export interface GetItemsOptions {
+  filter?: any;
+  projection?: string[];
+  sort?: any;
+  limit?: number;
+}
+
+
 
 export class ItemService {
+  static readonly DEFAULT_LIMIT = 500;
+  static readonly DEFAULT_SORT = { title: 1 };
+  static readonly DEFAULT_PROJECTION = ['title'];
 
-  static async getItems(query: any, sort:any={}) {
-    return NutritionItemModel.find(query).sort(sort)
+  static async getItems(options?: GetItemsOptions) {
+    const filter = options?.filter || {};
+    const projection = options?.projection || this.DEFAULT_PROJECTION;
+    const sort = options?.sort || this.DEFAULT_SORT;
+    const limit = options?.limit || this.DEFAULT_LIMIT;
+
+    return NutritionItemModel
+      .find(filter)
+      .select(projection)
+      .sort(sort)
+      .limit(limit);
   }
 
   static async getItemById(id: string) {

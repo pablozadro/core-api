@@ -86,28 +86,30 @@ export class ItemController {
 
 
   static async getAllItems(req: Request, res: Response, next: NextFunction) {
-    const { category, orderBy } = req.query;
-    const query: any = {};
+    const { category, orderBy, orderDir } = req.query;
+    // filter
+    const filter = category ? { category }: {}
+    // projection
+    const projection = ['title', 'fact', 'updatedAt'];
+    // sort
+    const order = orderBy ? orderBy.toLocaleString():'title';
+    const dir = orderDir ? parseInt(orderDir.toLocaleString()):1
     const sort: any = {};
-
-    if(category) {
-      query.category = category;
-    }
-
-    if(orderBy && typeof orderBy === 'string') {
-      const order = orderBy.split('-');
-      const orderItem = order[0].toLowerCase();
-      const orderDir = order[1];
-      const k = orderItem !=='title' ? `fact.${orderItem}`:orderItem;
-      sort[k] = orderDir === 'ASC' ? 1:-1
-    }
+    sort[order] = dir;
 
     try {
-      const items = await ItemService.getItems(query, sort);
+      const items = await ItemService.getItems({ 
+        filter,
+        projection,
+        sort
+      });
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Items Fetched Succesfully', 
-        payload: { items }, 
+        payload: { 
+          items,
+          len: items.length
+        }, 
         error: null 
       };
 
