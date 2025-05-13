@@ -23,15 +23,37 @@ Run `npm run scripts:generate-random-str` to generate random strings for:
 mongod
 ```
 
-### Run development server
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+## Run development server
 
 ```bash
+npm start
 npm run serve:dev
 ```
 
-### Lint & Test
+## Lint & Test
 
 ```bash
 npm run lint
 npm run test
 ```
+
+
+## Backup
+
+Dump DB on `backup` dir:
+
+```bash
+npm run backup:dump
+```
+
+Reestablecer DB local:
+
+```bash
+npm run backup:restore
+```
+
+

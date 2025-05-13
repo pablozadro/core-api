@@ -12,6 +12,8 @@
     "auth:random": "set DEBUG=scripts:auth:*&&ts-node -i scripts/auth/random",
     "migrate:nutrition:categories": "set DEBUG=scripts:migrate:*&&ts-node -i scripts/migrate/nutrition/categories",
     "migrate:nutrition:items": "set DEBUG=scripts:migrate:*&&ts-node -i scripts/migrate/nutrition/items",
+    "backup:dump": "mongodump --uri \"mongodb://127.0.0.1:27017/core-api\" --out backup/",
+    "backup:restore": "mongorestore --uri \"mongodb://127.0.0.1:27017/core-api\" backup/core-api",
     "lint": "npx eslint ./src",
     "test": "jest"
   },
