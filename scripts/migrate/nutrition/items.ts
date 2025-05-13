@@ -37,5 +37,5 @@ async function main({ filePath }: MigrateOptions) {
 }
 
 main({
-  filePath: path.resolve(__dirname, 'items.csv')
+  filePath: path.resolve(__dirname, 'nutrition-items.csv')
 });
