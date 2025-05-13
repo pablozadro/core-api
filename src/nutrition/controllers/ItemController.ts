@@ -87,10 +87,11 @@ export class ItemController {
 
   static async getAllItems(req: Request, res: Response, next: NextFunction) {
     const { category, orderBy, orderDir } = req.query;
+    
     // filter
     const filter = category ? { category }: {}
     // projection
-    const projection = ['title', 'fact', 'updatedAt'];
+    const projection = ['title', 'calories', 'proteins', 'updatedAt'];
     // sort
     const order = orderBy ? orderBy.toLocaleString():'title';
     const dir = orderDir ? parseInt(orderDir.toLocaleString()):1

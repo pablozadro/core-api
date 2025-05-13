@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "_moduleAliases": {
-    "@": "./src"
+    "@": "./src",
+    "@scripts": "./scripts"
   },
   "scripts": {
     "start": "npm run serve:dev",
     "serve:dev": "set DEBUG=core-api:*&&npx ts-node -i  ./src/index",
-    "scripts:generate-random-str": "ts-node -i scripts/generate-random-str",
-    "scripts:migrate-csv": "ts-node -i scripts/migrate-csv",
+    "auth:random": "set DEBUG=scripts:auth:*&&ts-node -i scripts/auth/random",
+    "migrate:nutrition:categories": "set DEBUG=scripts:migrate:*&&ts-node -i scripts/migrate/nutrition/categories",
+    "migrate:nutrition:items": "set DEBUG=scripts:migrate:*&&ts-node -i scripts/migrate/nutrition/items",
     "lint": "npx eslint ./src",
     "test": "jest"
   },

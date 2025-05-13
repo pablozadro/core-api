@@ -26,10 +26,10 @@ export class CategoryController {
 
   static async updateCategoryById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
-    const { title, color } = req.body;
+    const { title } = req.body;
 
     try {
-      const category = await CategoryService.updateCategoryById(id, { title, color });
+      const category = await CategoryService.updateCategoryById(id, { title });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Category Updated Successfully', 
@@ -66,10 +66,10 @@ export class CategoryController {
 
 
   static async createCategory(req: Request, res: Response, next: NextFunction) {
-    const { title, color } = req.body;
+    const { title } = req.body;
 
     try {
-      const category = await CategoryService.createCategory({ title, color });
+      const category = await CategoryService.createCategory({ title });
 
       const response: CoreApiResponse = {
         msg: '[Nutrition] Category Created Successfully', 

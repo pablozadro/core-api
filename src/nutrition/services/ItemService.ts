@@ -3,12 +3,12 @@ import createError from "http-errors";
 
 export interface CreateItemBody {
   title: string;
-  category?: string;
+  category: string;
 }
 
 export interface UpdateItemBody {
   title: string;
-  category?: string;
+  category: string;
 }
 
 export interface GetItemsOptions {
@@ -18,12 +18,17 @@ export interface GetItemsOptions {
   limit?: number;
 }
 
+export interface GetItemOptions {
+  projection?: string[];
+}
+
 
 
 export class ItemService {
   static readonly DEFAULT_LIMIT = 500;
   static readonly DEFAULT_SORT = { title: 1 };
-  static readonly DEFAULT_PROJECTION = ['title'];
+  static readonly DEFAULT_PROJECTION = ['title', 'updatedAt'];
+
 
   static async getItems(options?: GetItemsOptions) {
     const filter = options?.filter || {};
@@ -38,8 +43,9 @@ export class ItemService {
       .limit(limit);
   }
 
-  static async getItemById(id: string) {
-    return NutritionItemModel.findById(id)
+  static async getItemById(id: string, options: GetItemOptions = {}) {
+    const projection = options?.projection || this.DEFAULT_PROJECTION;
+    return NutritionItemModel.findById(id).select(projection)
   }
 
   static async createItem(body: CreateItemBody) {
@@ -52,11 +58,19 @@ export class ItemService {
     return NutritionItemModel.create(body);
   }
 
+  static async createItems(data: CreateItemBody[]) {
+    return NutritionItemModel.insertMany(data);
+  }
+
   static async updateItemById(id: string, body: UpdateItemBody) {
     return NutritionItemModel.findByIdAndUpdate(id, body, { new: true })
   }
 
   static async deleteItemById(id: string) {
     return NutritionItemModel.findByIdAndDelete(id)
+  }
+
+  static async deleteAllItems() {
+    return NutritionItemModel.collection.drop();
   }
 }

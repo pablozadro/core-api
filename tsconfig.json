@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@scripts/*": ["scripts/*"],
     },
     "target": "es5",
     "module": "commonjs",
@@ -19,7 +20,8 @@
     "files": true,
   },
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "./scripts/**/*.ts",
   ],
   "exclude": [
     "node_modules/**/*"

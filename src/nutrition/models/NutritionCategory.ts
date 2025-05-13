@@ -1,10 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 
 
 
 export interface NutritionCategory {
-  _id: string;
-  title: string;
+  _id: Types.ObjectId;
   color: string;
   createdAt: string;
   updatedAt: string;
@@ -14,15 +13,11 @@ const nutritionCategorySchema = new mongoose.Schema({
   title: { 
     type: String,
     required: true,
-  },
-  color: { 
-    type: String,
-    required: true,
-  },
+  }
 },
 { 
   timestamps: true 
 });
 
 
-export const NutritionCategoryModel = mongoose.model('Category', nutritionCategorySchema);
+export const NutritionCategoryModel = mongoose.model('nutrition-categories', nutritionCategorySchema);
