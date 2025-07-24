@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "02391c0c-a856-403d-987a-67e2b1fce3cc",
+		"_postman_id": "86293038-800c-4ea2-b758-a729cb34f5cf",
 		"name": "Core-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "906966"
@@ -184,264 +184,24 @@
 			]
 		},
 		{
-			"name": "Nutrition",
+			"name": "Health",
 			"item": [
 				{
-					"name": "Category",
-					"item": [
-						{
-							"name": "All categories",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/categories",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"categories"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "New Category",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"animals\",\r\n    \"color\": \"rgb(230,230,230)\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/categories",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"categories"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "category by ID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/categories/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"categories",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "68232349e0239c84269f8485"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "category by ID",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"super veggies\",\r\n    \"color\": \"rgb(15,15,15)\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/categories/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"categories",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "68080463c323c334ae8d905c"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "category by ID",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/categories/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"categories",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "680804beee62c6a975d4d9f1"
-										}
-									]
-								}
-							},
-							"response": []
+					"name": "Get Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/health",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"health"
+							]
 						}
-					]
-				},
-				{
-					"name": "Items",
-					"item": [
-						{
-							"name": "all items",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items?category=68232349e0239c84269f8485&orderBy=title&orderDir=-1",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"items"
-									],
-									"query": [
-										{
-											"key": "category",
-											"value": "68232349e0239c84269f8485"
-										},
-										{
-											"key": "orderBy",
-											"value": "title"
-										},
-										{
-											"key": "orderDir",
-											"value": "-1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "new item",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"test 3\",\r\n    \"category\": \"68095105043314f5e0303ec8\",\r\n    \"description\": \"\",\r\n    \"brand\": \"\",\r\n    \"fact\": {\r\n        \"calories\": 0,\r\n        \"totalFat\": 0,\r\n        \"saturatedFats\": 0,\r\n        \"transFat\": 0,\r\n        \"polyUnsaturatedFats\": 0,\r\n        \"monoUnsaturatedFats\": 0,\r\n        \"cholesterol\": 0,\r\n        \"sodium\": 0,\r\n        \"totalCarbohydrates\": 0,\r\n        \"dietaryFiber\": 0,\r\n        \"sugar\": 0,\r\n        \"protein\": 0,\r\n        \"vitaminD\": 0,\r\n        \"calcium\": 0,\r\n        \"iron\": 0,\r\n        \"potassium\": 0\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"items"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "item by id",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"port salut\",\r\n    \"category\": \"6809510e043314f5e0303ecb\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"items",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "680957121aff6b172323aaf5"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "item by Id",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"nutrition",
-										"items",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "680956321aff6b172323aae6"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
+					},
+					"response": []
 				}
 			]
 		}
