@@ -1,0 +1,52 @@
+{
+  "name": "core-api",
+  "version": "0.0.0",
+  "private": true,
+  "_moduleAliases": {
+    "@": "./src",
+    "@scripts": "./scripts"
+  },
+  "scripts": {
+    "start": "npm run serve:dev",
+    "serve:dev": "set DEBUG=core-api:*&&npx ts-node -i  ./src/index",
+    "auth:random": "set DEBUG=scripts:auth:*&&ts-node -i scripts/auth/random",
+    "backup:dump": "mongodump --host=127.0.0.1 --port=27017 --db=core-api --out=backup",
+    "backup:restore": "mongorestore --uri='mongodb://127.0.0.1:27017/core-api' ./backup/core-api",
+    "lint": "npx eslint ./src",
+    "test": "jest"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "csv-parse": "^5.6.0",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "mongoose": "^8.13.2",
+    "morgan": "~1.9.1",
+    "node-csv": "^0.1.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^5.0.1",
+    "@types/http-errors": "^2.0.4",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/supertest": "^6.0.3",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.1",
+    "typescript-eslint": "^8.29.1"
+  }
+}
