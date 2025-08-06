@@ -204,6 +204,57 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Nutrition",
+			"item": [
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "All Groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/groups",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Items",
+					"item": [
+						{
+							"name": "All Items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/items",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"items"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {

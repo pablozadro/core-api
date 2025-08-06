@@ -1,22 +1,5 @@
 import mongoose from 'mongoose';
 
-export interface AuthUserFull {
-  _id: string;
-  username: string;
-  email: string;
-  password: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
-
-export interface AuthUserPublic {
-  _id: string;
-  username: string;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 const authUserSchema = new mongoose.Schema({
   username: { 
