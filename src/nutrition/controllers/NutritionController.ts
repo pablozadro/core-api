@@ -1,9 +1,48 @@
 import { Request, Response, NextFunction } from 'express';
 import { CoreApiResponse } from '@/types';
-import { GetGroups, GetItems } from '@/nutrition/services';
+import { 
+  CreateCategory,
+  GetCategories,
+  GetGroups, 
+  GetItems, 
+} from '@/nutrition/services';
 
 
 export class NutritionController {
+
+  static async createCategory(req: Request, res: Response, next: NextFunction) {
+    const { body } = req;
+
+    try {
+      const category = await CreateCategory.execute(body);
+
+      const response: CoreApiResponse = { 
+        msg: '[Nutrition] Category Created Successfully', 
+        payload: { category }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async getCategories(req: Request, res: Response, next: NextFunction) {
+    try {
+      const categories = await GetCategories.execute();
+
+      const response: CoreApiResponse = { 
+        msg: '[Nutrition] Categories Fetched Successfully', 
+        payload: { categories }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
 
   static async getGroups(req: Request, res: Response, next: NextFunction) {
     try {

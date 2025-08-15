@@ -8,6 +8,7 @@ const nutritionItemSchema = new mongoose.Schema({
   },
   detail: { 
     type: String,
+    default: '-'
   },
   proteins: {
     type: Number,
@@ -21,9 +22,14 @@ const nutritionItemSchema = new mongoose.Schema({
     type: Number,
     default: null
   },
+  category: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Nutrition_Category',
+    default: null
+  },
   group: {
     type: mongoose.Types.ObjectId,
-    ref: 'NutritionGroup',
+    ref: 'Nutrition_Group',
     default: null
   }
 },
@@ -32,4 +38,4 @@ const nutritionItemSchema = new mongoose.Schema({
 });
 
 
-export const NutritionItemModel = mongoose.model('NutritionItem', nutritionItemSchema);
+export const NutritionItemModel = mongoose.model('Nutrition_Item', nutritionItemSchema);
