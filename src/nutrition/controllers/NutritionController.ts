@@ -1,7 +1,10 @@
+import { Types } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 import { CoreApiResponse } from '@/types';
 import { 
   CreateCategory,
+  UpdateCategory,
+  DeleteCategory,
   GetCategories,
   GetGroups, 
   GetItems, 
@@ -18,6 +21,45 @@ export class NutritionController {
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Category Created Successfully', 
+        payload: { category }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async updateCategory(req: Request, res: Response, next: NextFunction) {
+    const { body } = req;
+    const { id } = req.params;
+    const parsedId = new Types.ObjectId(id);
+
+    try {
+      const category = await UpdateCategory.execute(parsedId, body);
+
+      const response: CoreApiResponse = { 
+        msg: '[Nutrition] Category Updated Successfully', 
+        payload: { category }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async deleteCategory(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const parsedId = new Types.ObjectId(id);
+
+    try {
+      const category = await DeleteCategory.execute(parsedId);
+
+      const response: CoreApiResponse = { 
+        msg: '[Nutrition] Category Deleted Successfully', 
         payload: { category }, 
         error: null 
       }

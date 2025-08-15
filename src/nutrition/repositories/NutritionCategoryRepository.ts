@@ -1,6 +1,11 @@
+import { Types } from 'mongoose';
 import { NutritionCategoryModel } from "@/nutrition/models";
 
 export interface CreateCategoryPayload {
+  title: string;
+}
+
+export interface UpdateCategoryPayload {
   title: string;
 }
 
@@ -14,6 +19,10 @@ export class NutritionCategoryRepository {
     return NutritionCategoryModel.findOne({ title });
   }
 
+  static async getCategoryById(id: Types.ObjectId) {
+    return NutritionCategoryModel.findById(id)
+  }
+
   static async createCategory(payload: CreateCategoryPayload) {
     const { title } = payload;
     const category = await NutritionCategoryRepository.getCategoryByTitle(title);
@@ -23,5 +32,26 @@ export class NutritionCategoryRepository {
     }
 
     return NutritionCategoryModel.create(payload);
+  }
+
+  static async updateCategory(id: Types.ObjectId, payload: CreateCategoryPayload) {
+    const category = await NutritionCategoryRepository.getCategoryById(id);
+
+    if(!category) {
+      throw new Error('Category doesn\'t exists');
+    }
+
+    return NutritionCategoryModel.findByIdAndUpdate(id, payload, { new: true });
+  }
+
+  static async deleteCategory(id: Types.ObjectId) {
+    const category = await NutritionCategoryRepository.getCategoryById(id);
+
+    if(!category) {
+      throw new Error('Category doesn\'t exists');
+    }
+
+    await NutritionCategoryModel.findByIdAndDelete(id);
+    return category;
   }
 }

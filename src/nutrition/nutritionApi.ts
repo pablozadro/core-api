@@ -1,7 +1,7 @@
 import express from 'express';
 import { isAuthenticated } from '@/auth/middlewares';
 import { NutritionController } from '@/nutrition/controllers';
-import { createCategoryPayload } from '@/nutrition/validators'
+import { createCategory, updateCategory, deleteCategory } from '@/nutrition/validators'
 
 const router = express.Router();
 
@@ -14,8 +14,20 @@ router.get(
 
 router.post(
   '/categories', 
-  [ isAuthenticated, ...createCategoryPayload ], 
+  [ isAuthenticated, ...createCategory ], 
   NutritionController.createCategory
+);
+
+router.put(
+  '/categories/:id', 
+  [ isAuthenticated, ...updateCategory ], 
+  NutritionController.updateCategory
+);
+
+router.delete(
+  '/categories/:id', 
+  [ isAuthenticated, ...deleteCategory ], 
+  NutritionController.deleteCategory
 );
 
 // Groups
