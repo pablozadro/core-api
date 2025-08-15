@@ -2,5 +2,8 @@ export* from './UpdateCategory';
 export* from './DeleteCategory';
 export* from './CreateCategory';
 export * from './GetCategories';
+export * from './UpdateGroup';
+export * from './DeleteGroup';
+export * from './CreateGroup';
 export * from './GetGroups';
 export * from './GetItems';

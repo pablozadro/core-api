@@ -1,9 +1,10 @@
 import express from 'express';
 import { isAuthenticated } from '@/auth/middlewares';
 import { NutritionController } from '@/nutrition/controllers';
-import { createCategory, updateCategory, deleteCategory } from '@/nutrition/validators'
+import * as validators from '@/nutrition/validators'
 
 const router = express.Router();
+
 
 // Categories
 router.get(
@@ -14,27 +15,48 @@ router.get(
 
 router.post(
   '/categories', 
-  [ isAuthenticated, ...createCategory ], 
+  [ isAuthenticated, ...validators.createCategory ], 
   NutritionController.createCategory
 );
 
 router.put(
   '/categories/:id', 
-  [ isAuthenticated, ...updateCategory ], 
+  [ isAuthenticated, ...validators.updateCategory ], 
   NutritionController.updateCategory
 );
 
 router.delete(
   '/categories/:id', 
-  [ isAuthenticated, ...deleteCategory ], 
+  [ isAuthenticated, ...validators.deleteCategory ], 
   NutritionController.deleteCategory
 );
 
+
 // Groups
-router.get('/groups', 
+router.get(
+  '/groups', 
   [ isAuthenticated ], 
   NutritionController.getGroups
 );
+
+router.post(
+  '/groups', 
+  [ isAuthenticated, ...validators.createGroup ], 
+  NutritionController.createGroup
+);
+
+router.put(
+  '/groups/:id', 
+  [ isAuthenticated, ...validators.updateGroup ], 
+  NutritionController.updateGroup
+);
+
+router.delete(
+  '/groups/:id', 
+  [ isAuthenticated, ...validators.deleteGroup ], 
+  NutritionController.deleteGroup
+);
+
 
 // Items
 router.get(
