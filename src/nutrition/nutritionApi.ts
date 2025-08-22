@@ -65,5 +65,22 @@ router.get(
   NutritionController.getItems
 );
 
+router.post(
+  '/items', 
+  [ isAuthenticated, ...validators.createItem ], 
+  NutritionController.createItem
+);
+
+router.put(
+  '/items/:id', 
+  [ isAuthenticated, ...validators.updateItem ], 
+  NutritionController.updateItem
+);
+
+router.delete(
+  '/items/:id', 
+  [ isAuthenticated, ...validators.deleteItem ], 
+  NutritionController.deleteItem
+);
 
 export default router;

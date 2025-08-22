@@ -4,7 +4,7 @@ import createError from 'http-errors';
 
 
 export const createCategory = [
-  body('title').trim().notEmpty(),
+  body('title').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {
@@ -16,8 +16,8 @@ export const createCategory = [
 ];
 
 export const updateCategory = [
-  param('id').trim().isMongoId(),
-  body('title').trim().notEmpty(),
+  param('id').isMongoId(),
+  body('title').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {
@@ -29,7 +29,7 @@ export const updateCategory = [
 ];
 
 export const deleteCategory = [
-  param('id').trim().isMongoId(),
+  param('id').isMongoId(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {
@@ -41,7 +41,7 @@ export const deleteCategory = [
 ];
 
 export const createGroup = [
-  body('title').trim().notEmpty(),
+  body('title').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {
@@ -53,8 +53,8 @@ export const createGroup = [
 ];
 
 export const updateGroup = [
-  param('id').trim().isMongoId(),
-  body('title').trim().notEmpty(),
+  param('id').isMongoId(),
+  body('title').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {
@@ -66,7 +66,53 @@ export const updateGroup = [
 ];
 
 export const deleteGroup = [
-  param('id').trim().isMongoId(),
+  param('id').isMongoId(),
+  (req: Request, res: Response, next: NextFunction)  => {
+    const result = validationResult(req);
+    if (result.isEmpty()) {
+      return next();
+    }
+    const error = createError(400, 'Bad Request', { cause: result.array() })
+    next(error);
+  },
+];
+
+
+export const createItem = [
+  body('title').notEmpty(),
+  body('category').notEmpty().isMongoId(),
+  body('group').notEmpty().isMongoId(),
+  body('proteins').optional().isNumeric(),
+  body('calories').optional().isNumeric(),
+  body('carbohydrates').optional().isNumeric(),
+  (req: Request, res: Response, next: NextFunction)  => {
+    const result = validationResult(req);
+    if (result.isEmpty()) {
+      return next();
+    }
+    const error = createError(400, 'Bad Request', { cause: result.array() })
+    next(error);
+  },
+];
+
+export const updateItem = [
+  body('category').optional().isMongoId(),
+  body('group').optional().isMongoId(),
+  body('proteins').optional().isNumeric(),
+  body('calories').optional().isNumeric(),
+  body('carbohydrates').optional().isNumeric(),
+  (req: Request, res: Response, next: NextFunction)  => {
+    const result = validationResult(req);
+    if (result.isEmpty()) {
+      return next();
+    }
+    const error = createError(400, 'Bad Request', { cause: result.array() })
+    next(error);
+  },
+];
+
+export const deleteItem = [
+  param('id').isMongoId(),
   (req: Request, res: Response, next: NextFunction)  => {
     const result = validationResult(req);
     if (result.isEmpty()) {

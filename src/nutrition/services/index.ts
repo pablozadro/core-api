@@ -7,3 +7,6 @@ export * from './DeleteGroup';
 export * from './CreateGroup';
 export * from './GetGroups';
 export * from './GetItems';
+export * from './CreateItem';
+export * from './UpdateItem';
+export * from './DeleteItem';

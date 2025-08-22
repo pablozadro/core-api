@@ -446,6 +446,92 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Create Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"item 2\",\r\n    \"detail\": \"cocido\",\r\n    \"category\": \"689f2682a3c403c269eb8f88\",\r\n    \"group\": \"689f67b40a0da4d7b746ca60\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/items",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"proteins\": 250\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/items/:itemId",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"items",
+										":itemId"
+									],
+									"variable": [
+										{
+											"key": "itemId",
+											"value": "68a8a0c48d29a27824e4fb31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detele Item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/items/:itemId",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"items",
+										":itemId"
+									],
+									"variable": [
+										{
+											"key": "itemId",
+											"value": "68a8a0c48d29a27824e4fb31"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
