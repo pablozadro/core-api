@@ -1,30 +1,62 @@
 import { Types } from 'mongoose';
 import { NutritionItemModel } from "@/nutrition/models";
+import { ORDER_DIR_ASC } from '@/core/config';
+import debug from 'debug';
+
+const log = debug('core-api:nutrition:item-repository');
 
 export interface CreateItemPayload {
   title: string;
   detail?: string;
-  proteins?: number;
-  carbohydrates?: number;
-  calories?: number;
-  category: Types.ObjectId;
   group: Types.ObjectId;
+  category: Types.ObjectId;
+  calories?: number;
+  totalFats?: number;
+  saturatedFats?: number;
+  cholesterol?: number;
+  sodium?: number;
+  carbohydrates?: number;
+  fiber?: number;
+  proteins?: number;
 }
 
 export interface UpdateItemPayload {
   title?: string;
   detail?: string;
-  proteins?: number;
-  carbohydrates?: number;
-  calories?: number;
+  group: Types.ObjectId;
   category: Types.ObjectId;
-  group?: Types.ObjectId;
+  calories?: number;
+  total_fats?: number;
+  saturated_fats?: number;
+  cholesterol?: number;
+  sodium?: number;
+  carbohydrates?: number;
+  fiber?: number;
+  proteins?: number;
+}
+
+interface GetItemsParams {
+  orderBy?: string,
+  orderDir?: string,
 }
 
 export class NutritionItemRepository {
 
-  static getItems() {
-    return NutritionItemModel.find();
+  static getItems({
+    orderBy,
+    orderDir
+  }: GetItemsParams) {
+    log({ orderBy, orderDir });
+    const query = NutritionItemModel.find();
+    
+    if(orderBy && orderDir) {
+      const sort: any = {};
+      sort[orderBy] = orderDir === ORDER_DIR_ASC ? 1 : -1;
+      log({ sort });
+      query.sort(sort);
+    }
+
+    return query.exec();
   }
 
   static createItem(payload: CreateItemPayload) {

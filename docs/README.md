@@ -1,4 +1,13 @@
-# Request & Response
+# Core-API
+
+## Overview
+
+- Resposne
+- Backup
+- Migrate
+
+
+------------------------------------------------------------------------------------------------------------------------
 
 
 ## Response
@@ -13,15 +22,6 @@ Successfull Response
 }
 ```
 
-Successfull Status Codes
-
-```
-200 OK
-201 Created
-204 No Content
-```
-
-
 Error Response
 
 ```json
@@ -34,6 +34,14 @@ Error Response
     "cause": {}
   }
 }
+```
+
+Successfull Status Codes
+
+```
+200 OK
+201 Created
+204 No Content
 ```
 
 Error Status Codes
@@ -53,4 +61,23 @@ How to create errors:
 import createError from 'http-errors';
 
 throw createError(400, 'User Not Found', { cause: {}});
+```
+
+
+## Backup
+
+Dump & Restore
+
+```bash
+npm run backup:dump
+npm run backup:restore
+```
+
+
+## Migrate
+
+```bash
+npm run migrate:nutrition:categories
+npm run migrate:nutrition:groups
+npm run migrate:nutrition:items
 ```

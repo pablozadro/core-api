@@ -10,7 +10,33 @@ const nutritionItemSchema = new mongoose.Schema({
     type: String,
     default: '-'
   },
-  proteins: {
+  group: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Nutrition_Group',
+    required: true
+  },
+  category: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Nutrition_Category',
+    required: true
+  },
+  calories: {
+    type: Number,
+    default: null
+  },
+  totalFats: {
+    type: Number,
+    default: null
+  },
+  saturatedFats: {
+    type: Number,
+    default: null
+  },
+  cholesterol: {
+    type: Number,
+    default: null
+  },
+  sodium: {
     type: Number,
     default: null
   },
@@ -18,20 +44,14 @@ const nutritionItemSchema = new mongoose.Schema({
     type: Number,
     default: null
   },
-  calories: {
+  fiber: {
     type: Number,
     default: null
   },
-  category: {
-    type: mongoose.Types.ObjectId,
-    ref: 'Nutrition_Category',
+  proteins: {
+    type: Number,
     default: null
   },
-  group: {
-    type: mongoose.Types.ObjectId,
-    ref: 'Nutrition_Group',
-    default: null
-  }
 },
 { 
   timestamps: false

@@ -1,86 +1,83 @@
 import express from 'express';
 import { isAuthenticated } from '@/auth/middlewares';
-import { NutritionController } from '@/nutrition/controllers';
+import { 
+  NutritionGroupController,
+  NutritionCategoryController,
+  NutritionItemController,
+} from '@/nutrition/controllers';
 import * as validators from '@/nutrition/validators'
-
 const router = express.Router();
 
-
-// Categories
 router.get(
   '/categories', 
   [ isAuthenticated ], 
-  NutritionController.getCategories
+  NutritionCategoryController.getCategories
 );
 
 router.post(
   '/categories', 
   [ isAuthenticated, ...validators.createCategory ], 
-  NutritionController.createCategory
+  NutritionCategoryController.createCategory
 );
 
 router.put(
   '/categories/:id', 
   [ isAuthenticated, ...validators.updateCategory ], 
-  NutritionController.updateCategory
+  NutritionCategoryController.updateCategory
 );
 
 router.delete(
   '/categories/:id', 
   [ isAuthenticated, ...validators.deleteCategory ], 
-  NutritionController.deleteCategory
+  NutritionCategoryController.deleteCategory
 );
 
-
-// Groups
 router.get(
   '/groups', 
   [ isAuthenticated ], 
-  NutritionController.getGroups
+  NutritionGroupController.getGroups
 );
 
 router.post(
   '/groups', 
   [ isAuthenticated, ...validators.createGroup ], 
-  NutritionController.createGroup
+  NutritionGroupController.createGroup
 );
 
 router.put(
   '/groups/:id', 
   [ isAuthenticated, ...validators.updateGroup ], 
-  NutritionController.updateGroup
+  NutritionGroupController.updateGroup
 );
 
 router.delete(
   '/groups/:id', 
   [ isAuthenticated, ...validators.deleteGroup ], 
-  NutritionController.deleteGroup
+  NutritionGroupController.deleteGroup
 );
 
-
-// Items
 router.get(
   '/items', 
-  [ isAuthenticated ], 
-  NutritionController.getItems
+  [ isAuthenticated, ...validators.getItems ], 
+  NutritionItemController.getItems
 );
 
 router.post(
   '/items', 
   [ isAuthenticated, ...validators.createItem ], 
-  NutritionController.createItem
+  NutritionItemController.createItem
 );
 
 router.put(
   '/items/:id', 
   [ isAuthenticated, ...validators.updateItem ], 
-  NutritionController.updateItem
+  NutritionItemController.updateItem
 );
 
 router.delete(
   '/items/:id', 
   [ isAuthenticated, ...validators.deleteItem ], 
-  NutritionController.deleteItem
+  NutritionItemController.deleteItem
 );
 
 export default router;

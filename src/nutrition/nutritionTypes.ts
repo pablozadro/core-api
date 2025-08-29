@@ -14,3 +14,8 @@ export interface NutritionGroup {
   _id: Types.ObjectId;
   title: string;
 }
+
+export interface NutritionCategory {
+  _id: Types.ObjectId;
+  title: string;
+}
