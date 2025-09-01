@@ -47,7 +47,7 @@ export class NutritionItemRepository {
     orderDir
   }: GetItemsParams) {
     log({ orderBy, orderDir });
-    const query = NutritionItemModel.find();
+    const query = NutritionItemModel.find().lean();
     
     if(orderBy && orderDir) {
       const sort: any = {};
