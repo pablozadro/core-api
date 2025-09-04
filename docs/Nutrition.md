@@ -29,3 +29,9 @@ Formula:
 Links:
 - Calories Calculator: [https://www.healthline.com/nutrition/how-many-calories-per-day#calorie-calculator]
 
+
+## Macro Nutrients
+
+- Carbohydrates:  45% - 65% total daily calories (4 calories x gram)
+- Proteins:       10% - 35% total daily calories (4 calories x gram)
+- Fats:           00% - 00% total daily calories (8 calories x gram)
