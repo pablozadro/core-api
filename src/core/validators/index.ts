@@ -1,4 +1,4 @@
-import { query } from 'express-validator';
+import { query, param } from 'express-validator';
 import { OrderDir } from '@/core/coreTypes';
 import { ORDER_DIR_ASC, ORDER_DIR_DESC } from '@/core/config';
 
@@ -7,3 +7,11 @@ export const orderDirValidator = [
     return [ORDER_DIR_ASC, ORDER_DIR_DESC].includes(value as OrderDir);
   }),
 ];
+
+export const idValitator = [
+  param('id').isMongoId()
+]
+
+export const userIdValitator = [
+  param('userId').isMongoId()
+]

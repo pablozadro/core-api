@@ -1,5 +1,6 @@
 import express from 'express';
 import { isAuthenticated } from '@/auth/middlewares';
+import { idValitator } from '@/core/validators';
 import { 
   NutritionGroupController,
   NutritionCategoryController,
@@ -22,13 +23,13 @@ router.post(
 
 router.put(
   '/categories/:id', 
-  [ isAuthenticated, ...validators.updateCategory ], 
+  [ isAuthenticated, ...idValitator, ...validators.updateCategory ], 
   NutritionCategoryController.updateCategory
 );
 
 router.delete(
   '/categories/:id', 
-  [ isAuthenticated, ...validators.deleteCategory ], 
+  [ isAuthenticated, ...idValitator, ...validators.deleteCategory ], 
   NutritionCategoryController.deleteCategory
 );
 
@@ -52,7 +53,7 @@ router.put(
 
 router.delete(
   '/groups/:id', 
-  [ isAuthenticated, ...validators.deleteGroup ], 
+  [ isAuthenticated, ...idValitator, ...validators.deleteGroup ], 
   NutritionGroupController.deleteGroup
 );
 
@@ -70,13 +71,13 @@ router.post(
 
 router.put(
   '/items/:id', 
-  [ isAuthenticated, ...validators.updateItem ], 
+  [ isAuthenticated, ...idValitator, ...validators.updateItem ], 
   NutritionItemController.updateItem
 );
 
 router.delete(
   '/items/:id', 
-  [ isAuthenticated, ...validators.deleteItem ], 
+  [ isAuthenticated, ...idValitator, ...validators.deleteItem ], 
   NutritionItemController.deleteItem
 );
 

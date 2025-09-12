@@ -8,7 +8,7 @@ export function getRandomDecimal(min:number, max:number) {
 
 export const delayMiddleware = async (req: Request, res: Response, next: NextFunction)  => {
     const log = debug('core-api:core:delay-middleware');
-    const delay = getRandomDecimal(500, 1000);
+    const delay = getRandomDecimal(1000, 2000);
 
     log(`${delay} ms delay`);
 

@@ -236,7 +236,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"procesados\"\r\n}",
+									"raw": "{\r\n    \"title\": \"otros\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -345,7 +345,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"proteínas\"\r\n}",
+									"raw": "{\r\n    \"title\": \"otros\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -435,13 +435,27 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items",
+									"raw": "{{BASE_URL}}/nutrition/items?orderBy=sodium&orderDir=DESC&",
 									"host": [
 										"{{BASE_URL}}"
 									],
 									"path": [
 										"nutrition",
 										"items"
+									],
+									"query": [
+										{
+											"key": "orderBy",
+											"value": "sodium"
+										},
+										{
+											"key": "orderDir",
+											"value": "DESC"
+										},
+										{
+											"key": "",
+											"value": null
+										}
 									]
 								}
 							},
@@ -534,6 +548,118 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get  Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/profile/:userId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "6882554965b8dda72280ab1f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"weight\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile/:userId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "6882554965b8dda72280ab1f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"6882554965b8dda72280ab1f\",\r\n    \"weight\": 92,\r\n    \"height\": 176,\r\n    \"bornDate\": \"2023-12-25T10:00:00\",\r\n    \"gender\": \"MALE\",\r\n    \"activityLevel\": \"MODERATELY_ACTIVE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/profile",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/profile/:userId",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"profile",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "6882554965b8dda72280ab1f"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
