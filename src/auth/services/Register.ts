@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import argon2 from 'argon2';
 import env from '@/environment';
 import { AuthUserRepository } from '@/auth/repositories';
-
+import { ProfileRepository } from '@/profile/repositories';
 
 interface RegisterUserBody {
   username?: string;
@@ -28,6 +28,7 @@ export const Register = async (body: RegisterUserBody) => {
       password: hashedPassword
     }
 
-    await AuthUserRepository.create(requestBody);
-    return;
+    const user = await AuthUserRepository.create(requestBody);
+    await ProfileRepository.createProfile({ user: user._id })
+    return user;
 }

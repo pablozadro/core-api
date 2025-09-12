@@ -13,14 +13,16 @@ import {
 
 
 export const createBodyValidation = [
-  body('user').notEmpty().isMongoId(),
-  body('weight').notEmpty().isNumeric(),
-  body('height').notEmpty().isNumeric(),
-  body('bornDate').notEmpty().isString(),
-  body('gender').notEmpty().custom(value => {
+  body('user').optional().isMongoId(),
+  body('weight').optional().isNumeric(),
+  body('height').optional().isNumeric(),
+  body('bornDate').optional().isString(),
+  body('gender').optional().custom(value => {
+    if (value === '') return true;
     return [MALE, FEMALE].includes(value)
   }),
-  body('activityLevel').notEmpty().custom(value => {
+  body('activityLevel').optional().custom(value => {
+    if (value === '') return true;
     return [
       SEDENTARY,
       LIGHTLY_ACTIVE,
@@ -45,9 +47,11 @@ export const updateBodyValidation = [
   body('height').optional().isNumeric(),
   body('bornDate').optional().isString(),
   body('gender').optional().custom(value => {
+    if (value === '') return true;
     return [MALE, FEMALE].includes(value)
   }),
   body('activityLevel').optional().custom(value => {
+    if (value === '') return true;
     return [
       SEDENTARY,
       LIGHTLY_ACTIVE,

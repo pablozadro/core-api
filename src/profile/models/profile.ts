@@ -18,33 +18,31 @@ const profileSchema = new mongoose.Schema({
   weight: { 
     type: Number, 
     default: null,
-    required: true,
   },
   height: { 
     type: Number, 
     default: null,
-    required: true,
   },
   bornDate: { 
     type: Date, 
     default: null,
-    required: true,
   },
   gender: { 
     type: String,
-    enum: [MALE, FEMALE],
-    required: true,
+    enum: ['', MALE, FEMALE],
+    default: ''
   },
   activityLevel: { 
     type: String,
     enum: [
+      '',
       SEDENTARY,
       LIGHTLY_ACTIVE,
       MODERATELY_ACTIVE,
       VERY_ACTIVE,
       SUPER_ACTIVE,
     ],
-    required: true,
+    default: ''
   }
 },
 { 

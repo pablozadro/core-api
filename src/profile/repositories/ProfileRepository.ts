@@ -6,11 +6,11 @@ export type ActivityLevel = 'SEDENTARY' | 'LIGHTLY_ACTIVE' | 'MODERATELY_ACTIVE'
 
 export interface CreateProfilePayload {
   user: Types.ObjectId;
-  weight: number;
-  height: number;
-  bornDate: Date;
-  gender: ProfileGender;
-  activityLevel: ActivityLevel;
+  weight?: number;
+  height?: number;
+  bornDate?: Date;
+  gender?: ProfileGender;
+  activityLevel?: ActivityLevel;
 }
 
 export interface UpdateProfilePayload {
