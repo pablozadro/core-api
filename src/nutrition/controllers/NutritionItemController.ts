@@ -4,8 +4,9 @@ import { CoreApiResponse } from '@/types';
 import { 
   GetItems, 
   CreateItem,
-  UpdateItem,
-  DeleteItem,
+  UpdateItemById,
+  DeleteItemById,
+  GetItemById,
 } from '@/nutrition/services';
 
 
@@ -23,6 +24,27 @@ export class NutritionItemController {
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Items Fetched Successfully', 
         payload: { items }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async getItemById(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    const parsedId = new Types.ObjectId(id);
+
+    try {
+      const item = await GetItemById.execute({
+        id: parsedId
+      });
+
+      const response: CoreApiResponse = { 
+        msg: '[Nutrition] Item Fetched Successfully', 
+        payload: { item }, 
         error: null 
       }
 
@@ -50,13 +72,13 @@ export class NutritionItemController {
     }
   }
 
-  static async updateItem(req: Request, res: Response, next: NextFunction) {
+  static async updateItemById(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const item = await UpdateItem.execute(parsedId, body);
+      const item = await UpdateItemById.execute(parsedId, body);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Item Updated Successfully', 
@@ -70,12 +92,12 @@ export class NutritionItemController {
     }
   }
 
-  static async deleteItem(req: Request, res: Response, next: NextFunction) {
+  static async deleteItemById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const item = await DeleteItem.execute(parsedId);
+      const item = await DeleteItemById.execute(parsedId);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Item Deleted Successfully', 

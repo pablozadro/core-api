@@ -34,7 +34,7 @@ export class NutritionGroupRepository {
     return NutritionGroupModel.create(payload);
   }
 
-  static async updateGroup(id: Types.ObjectId, payload: CreateGroupPayload) {
+  static async updateGroupById(id: Types.ObjectId, payload: CreateGroupPayload) {
     const group = await NutritionGroupRepository.getGroupById(id);
 
     if(!group) {
@@ -44,7 +44,7 @@ export class NutritionGroupRepository {
     return NutritionGroupModel.findByIdAndUpdate(id, payload, { new: true });
   }
 
-  static async deleteGroup(id: Types.ObjectId) {
+  static async deleteGroupById(id: Types.ObjectId) {
     const group = await NutritionGroupRepository.getGroupById(id);
 
     if(!group) {

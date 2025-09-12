@@ -12,7 +12,7 @@ import {
 } from '@/profile/config'
 
 
-export const createBodyValidation = [
+export const createBody = [
   body('user').optional().isMongoId(),
   body('weight').optional().isNumeric(),
   body('height').optional().isNumeric(),
@@ -41,7 +41,7 @@ export const createBodyValidation = [
   },
 ];
 
-export const updateBodyValidation = [
+export const updateBody = [
   body('user').optional().isMongoId(),
   body('weight').optional().isNumeric(),
   body('height').optional().isNumeric(),

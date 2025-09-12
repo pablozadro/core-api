@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { body, param, query, validationResult } from 'express-validator';
 import createError from 'http-errors';
-import { orderDirValidator } from '@/core/validators';
+import { orderDir } from '@/core/validators';
 
 export const getItems = [
-  ...orderDirValidator,
+  ...orderDir,
   query('orderBy').optional().custom((value: string) => {
     const orderByFields = [
       'title',

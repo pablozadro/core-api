@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
 import { ProfileRepository } from '@/profile/repositories';
 
-export class DeleteProfile {
+export class DeleteProfileByUserId {
   static async execute(userId: Types.ObjectId) {
-    return ProfileRepository.deleteProfile(userId)
+    return ProfileRepository.deleteProfileByUserId(userId)
   }
 }

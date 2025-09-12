@@ -39,11 +39,15 @@ export class ProfileRepository {
     return Profile.create(payload);
   }
 
-  static updateProfile(userId: Types.ObjectId, payload: UpdateProfilePayload) {
+  static updateProfileByUserId(userId: Types.ObjectId, payload: UpdateProfilePayload) {
     return Profile.findOneAndUpdate({ user: userId }, payload, { new: true })
   }
 
-  static deleteProfile(userId: Types.ObjectId) {
+  static deleteProfileByUserId(userId: Types.ObjectId) {
     return Profile.findOneAndDelete({ user: userId })
+  }
+
+  static getAllProfiles() {
+    return Profile.find();
   }
 }

@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 import { CoreApiResponse } from '@/types';
 import { 
   CreateGroup,
-  UpdateGroup,
-  DeleteGroup,
+  UpdateGroupById,
+  DeleteGroupById,
   GetGroups,
 } from '@/nutrition/services';
 
@@ -30,13 +30,13 @@ export class NutritionGroupController {
     }
   }
 
-  static async updateGroup(req: Request, res: Response, next: NextFunction) {
+  static async updateGroupById(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const group = await UpdateGroup.execute(parsedId, body);
+      const group = await UpdateGroupById.execute(parsedId, body);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Group Updated Successfully', 
@@ -50,12 +50,12 @@ export class NutritionGroupController {
     }
   }
 
-  static async deleteGroup(req: Request, res: Response, next: NextFunction) {
+  static async deleteGroupById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const group = await DeleteGroup.execute(parsedId);
+      const group = await DeleteGroupById.execute(parsedId);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Group Deleted Successfully', 

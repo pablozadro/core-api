@@ -1,6 +1,6 @@
 import express from 'express';
 import { isAuthenticated } from '@/auth/middlewares';
-import { idValitator } from '@/core/validators';
+import { id } from '@/core/validators';
 import { 
   NutritionGroupController,
   NutritionCategoryController,
@@ -8,6 +8,10 @@ import {
 } from '@/nutrition/controllers';
 import * as validators from '@/nutrition/validators'
 const router = express.Router();
+
+/**
+ * Categories
+ */
 
 router.get(
   '/categories', 
@@ -23,15 +27,20 @@ router.post(
 
 router.put(
   '/categories/:id', 
-  [ isAuthenticated, ...idValitator, ...validators.updateCategory ], 
-  NutritionCategoryController.updateCategory
+  [ isAuthenticated, ...id, ...validators.updateCategory ], 
+  NutritionCategoryController.updateCategoryById
 );
 
 router.delete(
   '/categories/:id', 
-  [ isAuthenticated, ...idValitator, ...validators.deleteCategory ], 
-  NutritionCategoryController.deleteCategory
+  [ isAuthenticated, ...id, ...validators.deleteCategory ], 
+  NutritionCategoryController.deleteCategoryById
 );
+
+
+/**
+ * Groups
+ */
 
 router.get(
   '/groups', 
@@ -48,14 +57,19 @@ router.post(
 router.put(
   '/groups/:id', 
   [ isAuthenticated, ...validators.updateGroup ], 
-  NutritionGroupController.updateGroup
+  NutritionGroupController.updateGroupById
 );
 
 router.delete(
   '/groups/:id', 
-  [ isAuthenticated, ...idValitator, ...validators.deleteGroup ], 
-  NutritionGroupController.deleteGroup
+  [ isAuthenticated, ...id, ...validators.deleteGroup ], 
+  NutritionGroupController.deleteGroupById
 );
+
+
+/**
+ * Items
+ */
 
 router.get(
   '/items', 
@@ -69,16 +83,22 @@ router.post(
   NutritionItemController.createItem
 );
 
+router.get(
+  '/items/:id', 
+  [ isAuthenticated, ...id ], 
+  NutritionItemController.getItemById
+);
+
 router.put(
   '/items/:id', 
-  [ isAuthenticated, ...idValitator, ...validators.updateItem ], 
-  NutritionItemController.updateItem
+  [ isAuthenticated, ...id, ...validators.updateItem ], 
+  NutritionItemController.updateItemById
 );
 
 router.delete(
   '/items/:id', 
-  [ isAuthenticated, ...idValitator, ...validators.deleteItem ], 
-  NutritionItemController.deleteItem
+  [ isAuthenticated, ...id, ...validators.deleteItem ], 
+  NutritionItemController.deleteItemById
 );
 
 export default router;

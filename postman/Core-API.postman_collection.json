@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"pablozadro@gmail.com\",\r\n    \"password\": \"abc123\"\r\n}",
+							"raw": "{\r\n    \"email\": \"foo@gmail.com\",\r\n    \"password\": \"abc123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -80,7 +80,7 @@
 					"response": []
 				},
 				{
-					"name": "All Users",
+					"name": "Get All Users",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -98,7 +98,7 @@
 					"response": []
 				},
 				{
-					"name": "User by Id",
+					"name": "Get User by Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -123,7 +123,7 @@
 					"response": []
 				},
 				{
-					"name": "User By Id",
+					"name": "Update User by Id",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -157,7 +157,7 @@
 					"response": []
 				},
 				{
-					"name": "User By Id",
+					"name": "Delete User by Id",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -212,7 +212,7 @@
 					"name": "Categories",
 					"item": [
 						{
-							"name": "All Categories",
+							"name": "Get All Categories",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -257,7 +257,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Category",
+							"name": "Update Category by Id",
 							"request": {
 								"method": "PUT",
 								"header": [],
@@ -291,7 +291,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Category",
+							"name": "Delete Category by Id",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -321,7 +321,7 @@
 					"name": "Groups",
 					"item": [
 						{
-							"name": "All Groups",
+							"name": "Get All Groups",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -366,7 +366,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Group",
+							"name": "Update Group by Id",
 							"request": {
 								"method": "PUT",
 								"header": [],
@@ -400,7 +400,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Group",
+							"name": "Delete Group by Id",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -430,12 +430,12 @@
 					"name": "Items",
 					"item": [
 						{
-							"name": "All Items",
+							"name": "Get All Items",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{BASE_URL}}/nutrition/items?orderBy=sodium&orderDir=DESC&",
+									"raw": "{{BASE_URL}}/nutrition/items?orderBy=sodium&orderDir=DESC",
 									"host": [
 										"{{BASE_URL}}"
 									],
@@ -454,7 +454,8 @@
 										},
 										{
 											"key": "",
-											"value": null
+											"value": null,
+											"disabled": true
 										}
 									]
 								}
@@ -489,7 +490,7 @@
 							"response": []
 						},
 						{
-							"name": "Update Item",
+							"name": "Update Item by Id",
 							"request": {
 								"method": "PUT",
 								"header": [],
@@ -523,7 +524,7 @@
 							"response": []
 						},
 						{
-							"name": "Detele Item",
+							"name": "Detele Item by Id",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -546,6 +547,31 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Item by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/nutrition/items/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"nutrition",
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68b1a9aa3d5a78476d1cbec5"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -555,23 +581,24 @@
 			"name": "Profile",
 			"item": [
 				{
-					"name": "Get  Profile",
+					"name": "Get  Profile by User Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/profile/:userId",
+							"raw": "{{BASE_URL}}/profiles/:userId",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"profile",
+								"profiles",
 								":userId"
 							],
 							"variable": [
 								{
 									"key": "userId",
-									"value": "6882554965b8dda72280ab1f"
+									"value": "68c42831dd3d8bb756427859",
+									"description": "6882554965b8dda72280ab1f, 68c42831dd3d8bb756427859"
 								}
 							]
 						}
@@ -579,13 +606,13 @@
 					"response": []
 				},
 				{
-					"name": "Update Profile",
+					"name": "Update Profile by User Id",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"weight\": 90\r\n}",
+							"raw": "{\r\n    \"height\": 190\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -593,18 +620,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/profile/:userId",
+							"raw": "{{BASE_URL}}/profiles/:userId",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"profile",
+								"profiles",
 								":userId"
 							],
 							"variable": [
 								{
 									"key": "userId",
-									"value": "6882554965b8dda72280ab1f"
+									"value": "68c42831dd3d8bb756427859"
 								}
 							]
 						}
@@ -618,7 +645,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": \"6882554965b8dda72280ab1f\",\r\n    \"weight\": 92,\r\n    \"height\": 176,\r\n    \"bornDate\": \"2023-12-25T10:00:00\",\r\n    \"gender\": \"MALE\",\r\n    \"activityLevel\": \"MODERATELY_ACTIVE\"\r\n}",
+							"raw": "{\r\n    \"user\": \"6882554965b8dda72280ab1f\"\r\n}\r\n// {\r\n//     \"user\": \"6882554965b8dda72280ab1f\",\r\n//     \"weight\": 92,\r\n//     \"height\": 176,\r\n//     \"bornDate\": \"2023-12-25T10:00:00\",\r\n//     \"gender\": \"MALE\",\r\n//     \"activityLevel\": \"MODERATELY_ACTIVE\"\r\n// }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -626,35 +653,35 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/profile",
+							"raw": "{{BASE_URL}}/profiles",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"profile"
+								"profiles"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Profile",
+					"name": "Delete Profile by User Id",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/profile/:userId",
+							"raw": "{{BASE_URL}}/profiles/:userId",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"profile",
+								"profiles",
 								":userId"
 							],
 							"variable": [
 								{
 									"key": "userId",
-									"value": "6882554965b8dda72280ab1f"
+									"value": ""
 								}
 							]
 						}

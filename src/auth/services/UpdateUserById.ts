@@ -6,13 +6,14 @@ interface UpdateUserBody {
   username: string;
 }
 
+export class UpdateUserById {
+  static async execute(id: string, body: UpdateUserBody) {
+      const user = await AuthUserRepository.updateUserById(id, body);
 
-export const UpdateUserById = async (id: string, body: UpdateUserBody) => {
-    const user = await AuthUserRepository.updateUserById(id, body);
+      if(!user) {
+        throw createError(400, 'User Not Found');
+      }
 
-    if(!user) {
-      throw createError(400, 'User Not Found');
-    }
-
-    return;
+      return;
+  }
 }

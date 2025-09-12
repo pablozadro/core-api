@@ -15,7 +15,7 @@ export class AuthUserController {
     const { body } = req;
 
     try {
-      await Register(body);
+      await Register.execute(body);
 
       const response: CoreApiResponse = { 
         msg: '[Auth] User Created Successfully', 
@@ -34,7 +34,7 @@ export class AuthUserController {
     const { body } = req;
 
     try {
-      const token = await Login(body);
+      const token = await Login.execute(body);
 
       const response: CoreApiResponse = { 
         msg: '[Auth] User Login Successfully', 
@@ -52,7 +52,7 @@ export class AuthUserController {
     const { id } = req.params;
 
     try {
-      const user = await GetUserById(id);
+      const user = await GetUserById.execute(id);
 
       const response: CoreApiResponse = { 
         msg: '[Auth] User Fetched Successfully', 
@@ -71,7 +71,7 @@ export class AuthUserController {
     const { body } = req;
 
     try {
-      await UpdateUserById(id, body);
+      await UpdateUserById.execute(id, body);
 
       const response: CoreApiResponse = { 
         msg: '[Auth] User Updated Successfully', 
@@ -89,7 +89,7 @@ export class AuthUserController {
     const { id } = req.params;
 
     try {
-      await DeleteUserById(id);
+      await DeleteUserById.execute(id);
 
       const response: CoreApiResponse = { 
         msg: '[Auth] User Deleted Successfully', 
@@ -105,7 +105,7 @@ export class AuthUserController {
 
   static async getAllUsers(req: Request, res: Response, next: NextFunction) {
     try {
-      const users = await GetAllUsers();
+      const users = await GetAllUsers.execute();
 
       const response: CoreApiResponse = { 
         msg: '[Auth] Users Fetched Successfully', 

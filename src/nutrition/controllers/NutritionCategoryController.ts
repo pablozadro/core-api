@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 import { CoreApiResponse } from '@/types';
 import { 
   CreateCategory,
-  UpdateCategory,
-  DeleteCategory,
+  UpdateCategoryById,
+  DeleteCategoryById,
   GetCategories,
 } from '@/nutrition/services';
 
@@ -30,13 +30,13 @@ export class NutritionCategoryController {
     }
   }
 
-  static async updateCategory(req: Request, res: Response, next: NextFunction) {
+  static async updateCategoryById(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const category = await UpdateCategory.execute(parsedId, body);
+      const category = await UpdateCategoryById.execute(parsedId, body);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Category Updated Successfully', 
@@ -50,12 +50,12 @@ export class NutritionCategoryController {
     }
   }
 
-  static async deleteCategory(req: Request, res: Response, next: NextFunction) {
+  static async deleteCategoryById(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const parsedId = new Types.ObjectId(id);
 
     try {
-      const category = await DeleteCategory.execute(parsedId);
+      const category = await DeleteCategoryById.execute(parsedId);
 
       const response: CoreApiResponse = { 
         msg: '[Nutrition] Category Deleted Successfully', 

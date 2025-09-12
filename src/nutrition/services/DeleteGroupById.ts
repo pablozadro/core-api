@@ -2,9 +2,9 @@ import { Types } from 'mongoose';
 import { NutritionGroupRepository } from "@/nutrition/repositories/NutritionGroupRepository";
 
 
-export class DeleteGroup {
+export class DeleteGroupById {
 
   static async execute(id: Types.ObjectId) {
-    return NutritionGroupRepository.deleteGroup(id);
+    return NutritionGroupRepository.deleteGroupById(id);
   }
 }

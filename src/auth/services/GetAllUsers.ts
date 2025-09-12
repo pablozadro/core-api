@@ -1,5 +1,7 @@
 import { AuthUserRepository } from '@/auth/repositories';
 
-export const GetAllUsers = async () => {
-  return AuthUserRepository.getAll();
+export class GetAllUsers {
+  static async execute() {
+    return AuthUserRepository.getAll();
+  }
 }

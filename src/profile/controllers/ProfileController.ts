@@ -3,9 +3,10 @@ import { Request, Response, NextFunction } from 'express';
 import { CoreApiResponse } from '@/types';
 import {
   CreateProfile,
-  DeleteProfile,
-  GetProfile,
-  UpdateProfile,
+  DeleteProfileByUserId,
+  GetProfileByUserId,
+  UpdateProfileByUserId,
+  GetAllProfiles
 } from '@/profile/services';
 
 export class ProfileController {
@@ -33,11 +34,27 @@ export class ProfileController {
     const parsedId = new Types.ObjectId(userId);
 
     try {
-      const profile = await GetProfile.execute(parsedId);
+      const profile = await GetProfileByUserId.execute(parsedId);
 
       const response: CoreApiResponse = { 
         msg: '[Profile] Profile Fetched Successfully', 
         payload: { profile }, 
+        error: null 
+      }
+
+      res.json(response);
+    } catch(error) {
+      next(error);
+    }
+  }
+
+  static async getAllProfiles(req: Request, res: Response, next: NextFunction) {
+    try {
+      const profiles = await GetAllProfiles.execute();
+
+      const response: CoreApiResponse = { 
+        msg: '[Profile] Profiles Fetched Successfully', 
+        payload: { profiles }, 
         error: null 
       }
 
@@ -53,7 +70,7 @@ export class ProfileController {
     const parsedId = new Types.ObjectId(userId);
 
     try {
-      const profile = await UpdateProfile.execute(parsedId, body);
+      const profile = await UpdateProfileByUserId.execute(parsedId, body);
 
       const response: CoreApiResponse = { 
         msg: '[Profile] Profile Updated Successfully', 
@@ -72,7 +89,7 @@ export class ProfileController {
     const parsedId = new Types.ObjectId(userId);
 
     try {
-      const profile = await DeleteProfile.execute(parsedId);
+      const profile = await DeleteProfileByUserId.execute(parsedId);
 
       const response: CoreApiResponse = { 
         msg: '[Profile] Profile Deleted Successfully', 

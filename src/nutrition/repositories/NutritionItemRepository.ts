@@ -67,7 +67,7 @@ export class NutritionItemRepository {
     return NutritionItemModel.findById(id)
   }
 
-  static async updateItem(id: Types.ObjectId, payload: UpdateItemPayload) {
+  static async updateItemById(id: Types.ObjectId, payload: UpdateItemPayload) {
     const item = await NutritionItemRepository.getItemById(id);
 
     if(!item) {
@@ -77,7 +77,7 @@ export class NutritionItemRepository {
     return NutritionItemModel.findByIdAndUpdate(id, payload, { new: true });
   }
 
-  static async deleteItem(id: Types.ObjectId) {
+  static async deleteItemById(id: Types.ObjectId) {
     const item = await NutritionItemRepository.getItemById(id);
 
     if(!item) {

@@ -24,7 +24,7 @@ app.use(dbMiddleware);
 app.use('/api/health', healthApi);
 app.use('/api/auth', [delayMiddleware], authApi);
 app.use('/api/nutrition', [delayMiddleware], nutritionApi);
-app.use('/api/profile', [delayMiddleware], profileApi);
+app.use('/api/profiles', [delayMiddleware], profileApi);
 
 /* Error Handling */
 app.use(errorMiddleware);

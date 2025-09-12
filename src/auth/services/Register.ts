@@ -10,25 +10,26 @@ interface RegisterUserBody {
   password: string;
 }
 
+export class Register {
+  static async execute(body: RegisterUserBody) {
+      const { email, username, password } = body;
+      const { AUTH_PASSWORD_PEPPER: pepper } = env;
+      const existsUser = await AuthUserRepository.exists({ email });
 
-export const Register = async (body: RegisterUserBody) => {
-    const { email, username, password } = body;
-    const { AUTH_PASSWORD_PEPPER: pepper } = env;
-    const existsUser = await AuthUserRepository.exists({ email });
+      if (existsUser) {
+        throw createError(400, 'Bad Request', { cause: 'Email is already in use' });
+      }
 
-    if (existsUser) {
-      throw createError(400, 'Bad Request', { cause: 'Email is already in use' });
-    }
+      const hashedPassword = await argon2.hash(`${pepper}.${password}`);
+      const requestUsername = username || email.split('@')[0];
+      const requestBody = {
+        email,
+        username: requestUsername,
+        password: hashedPassword
+      }
 
-    const hashedPassword = await argon2.hash(`${pepper}.${password}`);
-    const requestUsername = username || email.split('@')[0];
-    const requestBody = {
-      email,
-      username: requestUsername,
-      password: hashedPassword
-    }
-
-    const user = await AuthUserRepository.create(requestBody);
-    await ProfileRepository.createProfile({ user: user._id })
-    return user;
+      const user = await AuthUserRepository.create(requestBody);
+      await ProfileRepository.createProfile({ user: user._id })
+      return user;
+  }
 }

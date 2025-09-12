@@ -5,7 +5,7 @@ import config from '@/auth/config';
 
 
 
-export const registerBodyValidation = [
+export const registerBody = [
   body('email').trim().isEmail(),
   body('password').trim().isLength({ 
     min: config.passwordMinLen, 
@@ -22,7 +22,7 @@ export const registerBodyValidation = [
 ];
 
 
-export const loginBodyValidation = [
+export const loginBody = [
   body('email').trim().isEmail(),
   body('password').notEmpty(),
   (req: Request, res: Response, next: NextFunction)  => {

@@ -1,9 +1,9 @@
 import { Types } from 'mongoose';
 import { NutritionItemRepository, UpdateItemPayload } from "@/nutrition/repositories";
 
-export class UpdateItem {
+export class UpdateItemById {
 
   static async execute(id: Types.ObjectId, payload: UpdateItemPayload) {
-    return NutritionItemRepository.updateItem(id, payload);
+    return NutritionItemRepository.updateItemById(id, payload);
   }
 }

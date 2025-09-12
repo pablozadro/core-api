@@ -34,7 +34,7 @@ export class NutritionCategoryRepository {
     return NutritionCategoryModel.create(payload);
   }
 
-  static async updateCategory(id: Types.ObjectId, payload: CreateCategoryPayload) {
+  static async updateCategoryById(id: Types.ObjectId, payload: CreateCategoryPayload) {
     const category = await NutritionCategoryRepository.getCategoryById(id);
 
     if(!category) {
@@ -44,7 +44,7 @@ export class NutritionCategoryRepository {
     return NutritionCategoryModel.findByIdAndUpdate(id, payload, { new: true });
   }
 
-  static async deleteCategory(id: Types.ObjectId) {
+  static async deleteCategoryById(id: Types.ObjectId) {
     const category = await NutritionCategoryRepository.getCategoryById(id);
 
     if(!category) {

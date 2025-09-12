@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
 import { ProfileRepository, UpdateProfilePayload } from '@/profile/repositories';
 
-export class UpdateProfile {
+export class UpdateProfileByUserId {
   static async execute(userId: Types.ObjectId, payload: UpdateProfilePayload) {
-    return ProfileRepository.updateProfile(userId, payload)
+    return ProfileRepository.updateProfileByUserId(userId, payload)
   }
 }
