@@ -7,6 +7,9 @@ import {
   MODERATELY_ACTIVE,
   VERY_ACTIVE,
   SUPER_ACTIVE,
+  LOOSE,
+  MANTAIN,
+  GAIN,
 } from '@/profile/config'
 
 const profileSchema = new mongoose.Schema({
@@ -41,6 +44,16 @@ const profileSchema = new mongoose.Schema({
       MODERATELY_ACTIVE,
       VERY_ACTIVE,
       SUPER_ACTIVE,
+    ],
+    default: ''
+  },
+  caloriesGoal: { 
+    type: String,
+    enum: [
+      '',
+      LOOSE,
+      MANTAIN,
+      GAIN
     ],
     default: ''
   }

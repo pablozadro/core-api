@@ -2,6 +2,7 @@ import { Types } from 'mongoose';
 
 export type ProfileGender = 'FEMALE' | 'MALE';
 export type ActivityLevel = 'SEDENTARY' | 'LIGHTLY_ACTIVE' | 'MODERATELY_ACTIVE' | 'VERY_ACTIVE' | 'SUPER_ACTIVE';
+export type CaloriesGoal = 'MAINTAIN' | 'LOOSE' | 'GAIN';
 
 export interface Profile {
   _id: Types.ObjectId;
