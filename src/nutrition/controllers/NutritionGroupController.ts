@@ -6,7 +6,7 @@ import {
   UpdateGroupById,
   DeleteGroupById,
   GetGroups,
-} from '@/nutrition/services';
+} from '@/nutrition/services/group';
 
 
 

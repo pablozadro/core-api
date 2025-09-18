@@ -12,4 +12,4 @@ const nutritionGroupSchema = new mongoose.Schema({
 });
 
 
-export const NutritionGroupModel = mongoose.model('Nutrition_Group', nutritionGroupSchema);
+export const NutritionGroupModel = mongoose.model('nutrition_group', nutritionGroupSchema);

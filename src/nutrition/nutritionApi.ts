@@ -1,12 +1,17 @@
 import express from 'express';
+
 import { isAuthenticated } from '@/auth/middlewares';
-import { id } from '@/core/validators';
+import { id, userId } from '@/core/validators';
+
 import { 
   NutritionGroupController,
   NutritionCategoryController,
   NutritionItemController,
+  NutritionProfileController
 } from '@/nutrition/controllers';
+
 import * as validators from '@/nutrition/validators'
+
 const router = express.Router();
 
 /**
@@ -100,5 +105,47 @@ router.delete(
   [ isAuthenticated, ...id, ...validators.deleteItem ], 
   NutritionItemController.deleteItemById
 );
+
+
+/**
+ * Profile
+ */
+
+router.post(
+  '/profiles', 
+  [isAuthenticated, ...validators.createProfile], 
+  NutritionProfileController.createProfile
+);
+
+router.get(
+  '/profiles', 
+  [isAuthenticated ], 
+  NutritionProfileController.getAllProfiles
+);
+
+router.get(
+  '/profiles/:userId', 
+  [ isAuthenticated, ...userId ], 
+  NutritionProfileController.getProfile
+);
+
+router.put(
+  '/profiles/:userId', 
+  [ isAuthenticated, ...userId, ...validators.updateProfile ], 
+  NutritionProfileController.updateProfile
+);
+
+router.delete(
+  '/profiles/:userId', 
+  [ isAuthenticated, ...userId ], 
+  NutritionProfileController.deleteProfile
+);
+
+router.get(
+  '/profiles/:userId', 
+  [ isAuthenticated, ...userId ], 
+  NutritionProfileController.getProfile
+);
+
 
 export default router;

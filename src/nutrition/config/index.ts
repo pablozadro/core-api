@@ -1,4 +1,4 @@
-import { ProfileGender, ActivityLevel, CaloriesGoal } from "@/profile/profileTypes";
+import { ProfileGender, ActivityLevel, CaloriesGoal } from "@/nutrition/nutritionTypes";
 
 export const MALE: ProfileGender = 'MALE';
 export const FEMALE: ProfileGender = 'FEMALE';
@@ -10,5 +10,5 @@ export const VERY_ACTIVE: ActivityLevel = 'VERY_ACTIVE';
 export const SUPER_ACTIVE: ActivityLevel = 'SUPER_ACTIVE';
 
 export const LOOSE: CaloriesGoal = 'LOOSE';
-export const MANTAIN: CaloriesGoal = 'MANTAIN';
+export const MAINTAIN: CaloriesGoal = 'MAINTAIN';
 export const GAIN: CaloriesGoal = 'GAIN';

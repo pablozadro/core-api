@@ -9,10 +9,10 @@ import {
   MODERATELY_ACTIVE,
   VERY_ACTIVE,
   SUPER_ACTIVE,
-} from '@/profile/config'
+} from '@/nutrition/config';
 
 
-export const createBody = [
+export const createProfile = [
   body('user').optional().isMongoId(),
   body('weight').optional().isNumeric(),
   body('height').optional().isNumeric(),
@@ -41,7 +41,7 @@ export const createBody = [
   },
 ];
 
-export const updateBody = [
+export const updateProfile = [
   body('user').optional().isMongoId(),
   body('weight').optional().isNumeric(),
   body('height').optional().isNumeric(),

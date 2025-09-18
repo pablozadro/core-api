@@ -6,7 +6,7 @@ import {
   UpdateCategoryById,
   DeleteCategoryById,
   GetCategories,
-} from '@/nutrition/services';
+} from '@/nutrition/services/category';
 
 
 

@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import argon2 from 'argon2';
 import env from '@/environment';
 import { AuthUserRepository } from '@/auth/repositories';
-import { ProfileRepository } from '@/profile/repositories';
+import { NutritionProfileRepository } from '@/nutrition/repositories';
 
 interface RegisterUserBody {
   username?: string;
@@ -29,7 +29,7 @@ export class Register {
       }
 
       const user = await AuthUserRepository.create(requestBody);
-      await ProfileRepository.createProfile({ user: user._id })
+      await NutritionProfileRepository.createProfile({ user: user._id })
       return user;
   }
 }

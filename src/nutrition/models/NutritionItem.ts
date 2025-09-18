@@ -58,4 +58,4 @@ const nutritionItemSchema = new mongoose.Schema({
 });
 
 
-export const NutritionItemModel = mongoose.model('Nutrition_Item', nutritionItemSchema);
+export const NutritionItemModel = mongoose.model('nutrition_item', nutritionItemSchema);

@@ -7,7 +7,7 @@ import {
   UpdateItemById,
   DeleteItemById,
   GetItemById,
-} from '@/nutrition/services';
+} from '@/nutrition/services/items';
 
 
 export class NutritionItemController {

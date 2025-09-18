@@ -6,8 +6,6 @@ import { errorMiddleware, dbMiddleware, delayMiddleware } from '@/core/middlewar
 import healthApi from '@/health/api';
 import authApi from '@/auth/authApi';
 import nutritionApi from '@/nutrition/nutritionApi';
-import profileApi from '@/profile/profileApi';
-
 
 /* App */
 const app = express();
@@ -24,7 +22,6 @@ app.use(dbMiddleware);
 app.use('/api/health', healthApi);
 app.use('/api/auth', [delayMiddleware], authApi);
 app.use('/api/nutrition', [delayMiddleware], nutritionApi);
-app.use('/api/profiles', [delayMiddleware], profileApi);
 
 /* Error Handling */
 app.use(errorMiddleware);

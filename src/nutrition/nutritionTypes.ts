@@ -19,3 +19,17 @@ export interface NutritionCategory {
   _id: Types.ObjectId;
   title: string;
 }
+
+export type NutritionProfileGender = 'FEMALE' | 'MALE';
+export type NutritionActivityLevel = 'SEDENTARY' | 'LIGHTLY_ACTIVE' | 'MODERATELY_ACTIVE' | 'VERY_ACTIVE' | 'SUPER_ACTIVE';
+export type NutritionCaloriesGoal = 'MAINTAIN' | 'LOOSE' | 'GAIN';
+
+export interface NutritionProfile {
+  _id: Types.ObjectId;
+  user: Types.ObjectId;
+  weight: number;
+  height: number;
+  bornDate: Date;
+  gender: NutritionProfileGender;
+  activityLevel: NutritionActivityLevel;
+}

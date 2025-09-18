@@ -8,11 +8,11 @@ import {
   VERY_ACTIVE,
   SUPER_ACTIVE,
   LOOSE,
-  MANTAIN,
+  MAINTAIN,
   GAIN,
-} from '@/profile/config'
+} from '@/nutrition/config';
 
-const profileSchema = new mongoose.Schema({
+const nutritionProfileSchema = new mongoose.Schema({
   user: { 
     type: mongoose.Types.ObjectId,
     ref: 'User',
@@ -52,7 +52,7 @@ const profileSchema = new mongoose.Schema({
     enum: [
       '',
       LOOSE,
-      MANTAIN,
+      MAINTAIN,
       GAIN
     ],
     default: ''
@@ -63,4 +63,4 @@ const profileSchema = new mongoose.Schema({
 });
 
 
-export const Profile = mongoose.model('Profile', profileSchema);
+export const NutritionProfile = mongoose.model('nutrition_profile', nutritionProfileSchema);

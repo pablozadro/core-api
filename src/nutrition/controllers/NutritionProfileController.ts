@@ -7,9 +7,9 @@ import {
   GetProfileByUserId,
   UpdateProfileByUserId,
   GetAllProfiles
-} from '@/profile/services';
+} from '@/nutrition/services/profile';
 
-export class ProfileController {
+export class NutritionProfileController {
 
   static async createProfile(req: Request, res: Response, next: NextFunction) {
     const { body } = req;
@@ -18,7 +18,7 @@ export class ProfileController {
       const profile = await CreateProfile.execute(body);
 
       const response: CoreApiResponse = { 
-        msg: '[Profile] Profile Created Successfully', 
+        msg: '[Nutrition] Profile Created Successfully', 
         payload: { profile }, 
         error: null 
       }
@@ -37,7 +37,7 @@ export class ProfileController {
       const profile = await GetProfileByUserId.execute(parsedId);
 
       const response: CoreApiResponse = { 
-        msg: '[Profile] Profile Fetched Successfully', 
+        msg: '[Nutrition] Profile Fetched Successfully', 
         payload: { profile }, 
         error: null 
       }
@@ -53,7 +53,7 @@ export class ProfileController {
       const profiles = await GetAllProfiles.execute();
 
       const response: CoreApiResponse = { 
-        msg: '[Profile] Profiles Fetched Successfully', 
+        msg: '[Nutrition] Profiles Fetched Successfully', 
         payload: { profiles }, 
         error: null 
       }
@@ -73,7 +73,7 @@ export class ProfileController {
       const profile = await UpdateProfileByUserId.execute(parsedId, body);
 
       const response: CoreApiResponse = { 
-        msg: '[Profile] Profile Updated Successfully', 
+        msg: '[Nutrition] Profile Updated Successfully', 
         payload: { profile }, 
         error: null 
       }
@@ -92,7 +92,7 @@ export class ProfileController {
       const profile = await DeleteProfileByUserId.execute(parsedId);
 
       const response: CoreApiResponse = { 
-        msg: '[Profile] Profile Deleted Successfully', 
+        msg: '[Nutrition] Profile Deleted Successfully', 
         payload: { profile }, 
         error: null 
       }
