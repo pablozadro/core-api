@@ -12,7 +12,7 @@ export interface CreateProfilePayload {
   user: Types.ObjectId;
   weight?: number;
   height?: number;
-  bornDate?: Date;
+  bornYear?: number;
   gender?: NutritionProfileGender;
   activityLevel?: NutritionActivityLevel;
 }
@@ -21,7 +21,7 @@ export interface UpdateProfilePayload {
   user?: Types.ObjectId;
   weight?: number;
   height?: number;
-  bornDate?: Date;
+  bornYear?: number;
   gender?: NutritionProfileGender;
   activityLevel?: NutritionActivityLevel;
 }
@@ -43,7 +43,13 @@ export class NutritionProfileRepository {
     return NutritionProfile.create(payload);
   }
 
-  static updateProfileByUserId(userId: Types.ObjectId, payload: UpdateProfilePayload) {
+  static async updateProfileByUserId(userId: Types.ObjectId, payload: UpdateProfilePayload) {
+    const profile = await NutritionProfileRepository.getProfileByUserId(userId);
+
+    if(!profile) {
+      return NutritionProfile.create(payload);
+    }
+
     return NutritionProfile.findOneAndUpdate({ user: userId }, payload, { new: true })
   }
 

@@ -26,8 +26,8 @@ const nutritionProfileSchema = new mongoose.Schema({
     type: Number, 
     default: null,
   },
-  bornDate: { 
-    type: Date, 
+  bornYear: { 
+    type: Number, 
     default: null,
   },
   gender: { 

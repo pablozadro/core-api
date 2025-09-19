@@ -13,16 +13,14 @@ import {
 
 
 export const createProfile = [
-  body('user').optional().isMongoId(),
-  body('weight').optional().isNumeric(),
-  body('height').optional().isNumeric(),
-  body('bornDate').optional().isString(),
-  body('gender').optional().custom(value => {
-    if (value === '') return true;
+  body('user').isMongoId(),
+  body('weight').isNumeric(),
+  body('height').isNumeric(),
+  body('bornYear').isNumeric(),
+  body('gender').custom(value => {
     return [MALE, FEMALE].includes(value)
   }),
   body('activityLevel').optional().custom(value => {
-    if (value === '') return true;
     return [
       SEDENTARY,
       LIGHTLY_ACTIVE,
@@ -42,16 +40,14 @@ export const createProfile = [
 ];
 
 export const updateProfile = [
-  body('user').optional().isMongoId(),
-  body('weight').optional().isNumeric(),
-  body('height').optional().isNumeric(),
-  body('bornDate').optional().isString(),
-  body('gender').optional().custom(value => {
-    if (value === '') return true;
+  body('user').isMongoId(),
+  body('weight').isNumeric(),
+  body('height').isNumeric(),
+  body('bornYear').isNumeric(),
+  body('gender').custom(value => {
     return [MALE, FEMALE].includes(value)
   }),
-  body('activityLevel').optional().custom(value => {
-    if (value === '') return true;
+  body('activityLevel').custom(value => {
     return [
       SEDENTARY,
       LIGHTLY_ACTIVE,

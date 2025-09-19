@@ -29,7 +29,7 @@ export interface NutritionProfile {
   user: Types.ObjectId;
   weight: number;
   height: number;
-  bornDate: Date;
+  bornYear: number;
   gender: NutritionProfileGender;
   activityLevel: NutritionActivityLevel;
 }
