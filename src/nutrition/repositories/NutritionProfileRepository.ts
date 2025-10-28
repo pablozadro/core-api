@@ -3,7 +3,7 @@ import { NutritionProfile } from '@/nutrition/models';
 import {
   NutritionProfileGender,
   NutritionActivityLevel
-} from '@/nutrition/nutritionTypes';
+} from '@/nutrition/types';
 
 
 

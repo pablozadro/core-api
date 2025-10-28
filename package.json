@@ -1,6 +1,12 @@
 {
   "name": "core-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Welcome to a journey through time and space",
+  "author": {
+    "name": "Pablo Zadro",
+    "email": "pablozadro@gmail.com"
+  },
+  "license": "ISC",
   "private": true,
   "_moduleAliases": {
     "@": "./src",

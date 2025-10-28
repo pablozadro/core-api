@@ -4,7 +4,7 @@ import createError from 'http-errors';
 import jwt from 'jsonwebtoken';
 import env from '@/environment';
 
-const log = debug('core-api:isAuthenticated');
+const log = debug('core-api:auth:middlewares:isAuthenticated');
 
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction)  => {
   const authorization = req.headers.authorization;

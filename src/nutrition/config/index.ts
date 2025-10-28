@@ -1,14 +1,42 @@
-import { ProfileGender, ActivityLevel, CaloriesGoal } from "@/nutrition/nutritionTypes";
+import { Nutrition } from "core-types";
 
-export const MALE: ProfileGender = 'MALE';
-export const FEMALE: ProfileGender = 'FEMALE';
+interface NutritionConfig {
+  gender: {
+    male: Nutrition.Gender;
+    female: Nutrition.Gender;
+  };
+  activityLevel: {
+    sedentary: Nutrition.ActivityLevel;
+    lightlyActive: Nutrition.ActivityLevel;
+    moderatelyActive: Nutrition.ActivityLevel;
+    veryActive: Nutrition.ActivityLevel;
+    superActive: Nutrition.ActivityLevel;
+  };
+  caloriesGoal: {
+    loose: Nutrition.CaloriesGoal
+    maintain: Nutrition.CaloriesGoal
+    gain: Nutrition.CaloriesGoal
+  }
+}
 
-export const SEDENTARY: ActivityLevel = 'SEDENTARY';
-export const LIGHTLY_ACTIVE: ActivityLevel = 'LIGHTLY_ACTIVE';
-export const MODERATELY_ACTIVE: ActivityLevel = 'MODERATELY_ACTIVE';
-export const VERY_ACTIVE: ActivityLevel = 'VERY_ACTIVE';
-export const SUPER_ACTIVE: ActivityLevel = 'SUPER_ACTIVE';
 
-export const LOOSE: CaloriesGoal = 'LOOSE';
-export const MAINTAIN: CaloriesGoal = 'MAINTAIN';
-export const GAIN: CaloriesGoal = 'GAIN';
+const config: NutritionConfig = {
+  gender: {
+    male: 'MALE',
+    female: 'FEMALE',
+  },
+  activityLevel: {
+    sedentary: 'SEDENTARY',
+    lightlyActive: 'LIGHTLY_ACTIVE',
+    moderatelyActive: 'MODERATELY_ACTIVE',
+    veryActive: 'VERY_ACTIVE',
+    superActive: 'SUPER_ACTIVE',
+  },
+  caloriesGoal: {
+    loose: 'LOOSE',
+    maintain: 'MAINTAIN',
+    gain: 'GAIN',
+  }
+};
+
+export default config;

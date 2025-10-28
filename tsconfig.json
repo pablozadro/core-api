@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@scripts/*": ["scripts/*"],
+      "@/*": ["./src/*"],
+      "@scripts/*": ["./scripts/*"],
     },
     "target": "es5",
     "module": "commonjs",

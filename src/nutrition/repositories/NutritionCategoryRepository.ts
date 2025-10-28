@@ -31,7 +31,7 @@ export class NutritionCategoryRepository {
       throw new Error('Category already exists');
     }
 
-    return NutritionCategoryModel.create(payload);
+    return NutritionCategoryModel.create(payload, { new: true });
   }
 
   static async updateCategoryById(id: Types.ObjectId, payload: CreateCategoryPayload) {

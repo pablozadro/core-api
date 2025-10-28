@@ -3,9 +3,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 import { errorMiddleware, dbMiddleware, delayMiddleware } from '@/core/middlewares';
-import healthApi from '@/health/api';
-import authApi from '@/auth/authApi';
-import nutritionApi from '@/nutrition/nutritionApi';
+import healthApi from '@/health/api/healthApi';
+import authApi from '@/auth/api/authApi';
+import nutritionApi from '@/nutrition/api/nutritionApi';
 
 /* App */
 const app = express();
@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(dbMiddleware);
 
 /* APIs */
-app.use('/api/health', healthApi);
+app.use('/api/health', [delayMiddleware], healthApi);
 app.use('/api/auth', [delayMiddleware], authApi);
 app.use('/api/nutrition', [delayMiddleware], nutritionApi);
 

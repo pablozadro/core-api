@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
-import { CoreApiResponse } from '@/types';
+import { Core, Nutrition } from 'core-types';
 import { 
   GetItems, 
   CreateItem,
@@ -13,15 +13,17 @@ import {
 export class NutritionItemController {
 
   static async getItems(req: Request, res: Response, next: NextFunction) {
-    const { orderBy, orderDir } = req.query;
+    const { orderBy, orderDir, category, group } = req.query;
 
     try {
       const items = await GetItems.execute({
         orderBy: orderBy?.toString(),
         orderDir: orderDir?.toString(),
+        category: category?.toString(), 
+        group: group?.toString()
       });
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ items: Nutrition.Item[] }> = { 
         msg: '[Nutrition] Items Fetched Successfully', 
         payload: { items }, 
         error: null 
@@ -42,7 +44,7 @@ export class NutritionItemController {
         id: parsedId
       });
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ item: Nutrition.Item }> = { 
         msg: '[Nutrition] Item Fetched Successfully', 
         payload: { item }, 
         error: null 
@@ -60,7 +62,7 @@ export class NutritionItemController {
     try {
       const item = await CreateItem.execute(body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ item: Nutrition.Item }> = { 
         msg: '[Nutrition] Item Created Successfully', 
         payload: { item }, 
         error: null 
@@ -80,7 +82,7 @@ export class NutritionItemController {
     try {
       const item = await UpdateItemById.execute(parsedId, body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ item: Nutrition.Item }> = { 
         msg: '[Nutrition] Item Updated Successfully', 
         payload: { item }, 
         error: null 
@@ -99,7 +101,7 @@ export class NutritionItemController {
     try {
       const item = await DeleteItemById.execute(parsedId);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ item: Nutrition.Item }> = { 
         msg: '[Nutrition] Item Deleted Successfully', 
         payload: { item }, 
         error: null 

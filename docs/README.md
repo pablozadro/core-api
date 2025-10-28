@@ -1,16 +1,7 @@
 # Core-API
 
-## Overview
 
-- Resposne
-- Backup
-- Migrate
-
-
-------------------------------------------------------------------------------------------------------------------------
-
-
-## Response
+## API Response
 
 Successfull Response
 
@@ -36,7 +27,8 @@ Error Response
 }
 ```
 
-Successfull Status Codes
+
+## Successfull Status Codes
 
 ```
 200 OK
@@ -62,6 +54,9 @@ import createError from 'http-errors';
 
 throw createError(400, 'User Not Found', { cause: {}});
 ```
+
+
+------------------------------------------------------------------------------------------------------------------------
 
 
 ## Backup

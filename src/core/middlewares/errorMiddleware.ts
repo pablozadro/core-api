@@ -1,11 +1,11 @@
 import createError, { HttpError } from 'http-errors';
 import { Request, Response, NextFunction } from 'express';
-import { CoreApiError, CoreApiResponse } from '@/types';
+import { Core } from 'core-types';
 
 
 export const errorMiddleware = [
   (req: Request, res: Response, next: NextFunction) => {
-    const error: HttpError = createError(404, 'Not Found')
+    const error: HttpError = createError(404, 'Not Found');
     next(error);
   },
   (err: HttpError, req: Request, res: Response, next: NextFunction) => {
@@ -13,13 +13,13 @@ export const errorMiddleware = [
     const msg = err.message || 'Unknown Error';
     const cause = err.cause || null;
 
-    const error: CoreApiError = {
+    const error: Core.ApiResponseError = {
       status,
       msg,
       cause
     }
 
-    const response: CoreApiResponse = {
+    const response: Core.ApiResponse<null> = {
       msg: 'Core-API Error',
       payload: null,
       error

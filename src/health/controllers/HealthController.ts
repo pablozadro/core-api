@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { CoreApiResponse } from '@/types';
+import { Core } from 'core-types';
 
 export class HealthController {
 
   static async getHealthCheck(req: Request, res: Response) {
-    const response: CoreApiResponse = { 
+    const response: Core.ApiResponse<null> = { 
       msg: 'Health Check OK', 
       payload: null, 
       error: null 

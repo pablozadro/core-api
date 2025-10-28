@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
-import { CoreApiResponse } from '@/types';
+import { Core, Nutrition } from 'core-types';
 import { 
   CreateGroup,
   UpdateGroupById,
@@ -18,7 +18,7 @@ export class NutritionGroupController {
     try {
       const group = await CreateGroup.execute(body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ group: Nutrition.Group }> = { 
         msg: '[Nutrition] Group Created Successfully', 
         payload: { group }, 
         error: null 
@@ -38,7 +38,7 @@ export class NutritionGroupController {
     try {
       const group = await UpdateGroupById.execute(parsedId, body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ group: Nutrition.Group }> = { 
         msg: '[Nutrition] Group Updated Successfully', 
         payload: { group }, 
         error: null 
@@ -57,7 +57,7 @@ export class NutritionGroupController {
     try {
       const group = await DeleteGroupById.execute(parsedId);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ group: Nutrition.Group }> = { 
         msg: '[Nutrition] Group Deleted Successfully', 
         payload: { group }, 
         error: null 
@@ -73,7 +73,7 @@ export class NutritionGroupController {
     try {
       const groups = await GetGroups.execute();
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ groups: Nutrition.Group[] }>= { 
         msg: '[Nutrition] Groups Fetched Successfully', 
         payload: { groups }, 
         error: null 

@@ -1,4 +1,17 @@
-import { OrderDir } from "@/core/coreTypes";
+import { Core } from 'core-types';
 
-export const ORDER_DIR_ASC: OrderDir = 'ASC';
-export const ORDER_DIR_DESC: OrderDir = 'DESC';
+interface CoreConfig {
+  orderDir: { 
+    asc: Core.QueryParamsOrderDir; 
+    desc: Core.QueryParamsOrderDir; 
+  };
+}
+
+const config: CoreConfig = {
+  orderDir: {
+    asc: 'ASC',
+    desc: 'DESC'
+  }
+}
+
+export default config;

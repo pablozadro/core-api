@@ -36,17 +36,21 @@ export interface UpdateItemPayload {
 }
 
 interface GetItemsParams {
-  orderBy?: string,
-  orderDir?: string,
+  orderBy?: string;
+  orderDir?: string;
+  category?: string;
+  group?: string;
 }
 
 export class NutritionItemRepository {
 
   static getItems({
     orderBy,
-    orderDir
+    orderDir,
+    category,
+    group,
   }: GetItemsParams) {
-    log({ orderBy, orderDir });
+    log({ orderBy, orderDir, category, group });
     const query = NutritionItemModel.find().lean();
     
     if(orderBy && orderDir) {
@@ -54,6 +58,14 @@ export class NutritionItemRepository {
       sort[orderBy] = orderDir === ORDER_DIR_ASC ? 1 : -1;
       log({ sort });
       query.sort(sort);
+    }
+
+    if(category) {
+      query.find({ category })
+    }
+
+    if(group) {
+      query.find({ group })
     }
 
     return query.exec();

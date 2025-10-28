@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { CoreApiResponse } from '@/types';
+import { Core, Auth } from 'core-types';
 import { 
   DeleteUserById,
   GetAllUsers,
@@ -17,7 +17,7 @@ export class AuthUserController {
     try {
       await Register.execute(body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<null> = { 
         msg: '[Auth] User Created Successfully', 
         payload: null, 
         error: null 
@@ -36,7 +36,7 @@ export class AuthUserController {
     try {
       const token = await Login.execute(body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ token: string; }> = { 
         msg: '[Auth] User Login Successfully', 
         payload: { token }, 
         error: null 
@@ -54,7 +54,7 @@ export class AuthUserController {
     try {
       const user = await GetUserById.execute(id);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ user: Auth.User }> = { 
         msg: '[Auth] User Fetched Successfully', 
         payload: { user }, 
         error: null 
@@ -73,7 +73,7 @@ export class AuthUserController {
     try {
       await UpdateUserById.execute(id, body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<null> = { 
         msg: '[Auth] User Updated Successfully', 
         payload: null, 
         error: null 
@@ -91,7 +91,7 @@ export class AuthUserController {
     try {
       await DeleteUserById.execute(id);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<null> = { 
         msg: '[Auth] User Deleted Successfully', 
         payload: null, 
         error: null 
@@ -107,7 +107,7 @@ export class AuthUserController {
     try {
       const users = await GetAllUsers.execute();
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ users: Auth.User[] }> = { 
         msg: '[Auth] Users Fetched Successfully', 
         payload: { users }, 
         error: null 

@@ -1,10 +1,13 @@
 import { query, param } from 'express-validator';
-import { OrderDir } from '@/core/coreTypes';
-import { ORDER_DIR_ASC, ORDER_DIR_DESC } from '@/core/config';
+import { Core } from 'core-types';
+import coreConfig from '@/core/config';
 
 export const orderDir = [
   query('orderDir').optional().custom((value: string) => {
-    return [ORDER_DIR_ASC, ORDER_DIR_DESC].includes(value as OrderDir);
+    return [
+      coreConfig.orderDir.asc, 
+      coreConfig.orderDir.desc
+    ].includes(value as Core.QueryParamsOrderDir);
   }),
 ];
 

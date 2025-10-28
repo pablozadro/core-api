@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
-import { CoreApiResponse } from '@/types';
+import { Core, Nutrition } from 'core-types';
 import {
   CreateProfile,
   DeleteProfileByUserId,
@@ -17,7 +17,7 @@ export class NutritionProfileController {
     try {
       const profile = await CreateProfile.execute(body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ profile: Nutrition.Profile }> = { 
         msg: '[Nutrition] Profile Created Successfully', 
         payload: { profile }, 
         error: null 
@@ -36,7 +36,7 @@ export class NutritionProfileController {
     try {
       const profile = await GetProfileByUserId.execute(parsedId);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ profile: Nutrition.Profile }> = { 
         msg: '[Nutrition] Profile Fetched Successfully', 
         payload: { profile }, 
         error: null 
@@ -52,7 +52,7 @@ export class NutritionProfileController {
     try {
       const profiles = await GetAllProfiles.execute();
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ profiles: Nutrition.Profile[] }> = { 
         msg: '[Nutrition] Profiles Fetched Successfully', 
         payload: { profiles }, 
         error: null 
@@ -72,7 +72,7 @@ export class NutritionProfileController {
     try {
       const profile = await UpdateProfileByUserId.execute(parsedId, body);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ profile: Nutrition.Profile }> = { 
         msg: '[Nutrition] Profile Updated Successfully', 
         payload: { profile }, 
         error: null 
@@ -91,7 +91,7 @@ export class NutritionProfileController {
     try {
       const profile = await DeleteProfileByUserId.execute(parsedId);
 
-      const response: CoreApiResponse = { 
+      const response: Core.ApiResponse<{ profile: Nutrition.Profile }> = { 
         msg: '[Nutrition] Profile Deleted Successfully', 
         payload: { profile }, 
         error: null 

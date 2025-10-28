@@ -78,7 +78,8 @@ router.delete(
 
 router.get(
   '/items', 
-  [ isAuthenticated, ...validators.getItems ], 
+  // [ isAuthenticated, ...validators.getItems ], 
+  [ ...validators.getItems ], 
   NutritionItemController.getItems
 );
 
@@ -90,7 +91,8 @@ router.post(
 
 router.get(
   '/items/:id', 
-  [ isAuthenticated, ...id ], 
+  // [ isAuthenticated, ...id ], 
+  [ ...id ], 
   NutritionItemController.getItemById
 );
 
