@@ -40,9 +40,13 @@ export class Login {
         updatedAt: user.updatedAt,
       };
 
+      const day = 1000 * 60 * 60 * 24;
+      const week = day * 7;
+      const expiresIn =  Date.now() + week;
+
       const token = jwt.sign(payload, jwtSignSecret, {
         algorithm: 'HS256',
-        expiresIn: '7d'
+        expiresIn
       });
 
       return token;
